@@ -76,9 +76,13 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'Galery_foto',
+	'database' => 'u5587213_foto_gallery',
+	// online
+	'username' => 'u5587213_foto_gallery',
+	'password' => 'Sembarang123!',
+	// ofline
+	// 'username' => 'root',
+	// 'password' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
