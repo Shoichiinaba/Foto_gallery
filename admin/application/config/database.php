@@ -79,7 +79,7 @@ $db['default'] = array(
 	'database' => 'u5587213_foto_gallery',
 	// online
 	'username' => 'u5587213_foto_gallery',
-	'password' => 'Sembarang123!',
+	'password' => 'Semarang123!',
 	// ofline
 	// 'username' => 'root',
 	// 'password' => '',
