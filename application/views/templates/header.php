@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?php echo $title; ?> | Multiple Images Management in CodeIgniter</title>
+    <title><?php echo $title; ?> | Katalog Foto Gallery</title>
 
     <!-- Bootstrap library -->
     <link rel="stylesheet" href="<?php echo base_url('tamp_public/'); ?>css/custom.css">
