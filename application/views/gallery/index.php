@@ -41,7 +41,7 @@
                     <td class="thumbnail"><?php echo $defaultImage; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['created']; ?></td>
-                    <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>"><?php echo ($row['status'] == 1)?'Active':'Inactive'; ?></span></a></td>
+                    <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1)?'badge-success':'badge-danger'; ?>"><?php echo ($row['status'] == 1)?'Ready':'Not Ready'; ?></span></a></td>
                     <td>
                         <a href="<?php echo base_url('manage_gallery/view/'.$row['id']); ?>" class="btn btn-primary">view</a>
                     </td>
