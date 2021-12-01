@@ -2,10 +2,11 @@
 deployment:
   tasks:
     - export DEPLOYPART=/home/u5587213/public_html/sisolusi.id/foto_gallery/
-    - /bin/cp -R admin $DEPLOYPART
     - /bin/cp -R application $DEPLOYPART
     - /bin/cp -R assets $DEPLOYPART
     - /bin/cp -R system $DEPLOYPART
+    - /bin/cp -R tamp_public $DEPLOYPART
+    - /bin/cp -R uploads $DEPLOYPART
     - /bin/cp .htaccess $DEPLOYPART
     - /bin/cp composer.json $DEPLOYPART
     - /bin/cp composer.lock $DEPLOYPART

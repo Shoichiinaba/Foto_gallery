@@ -1,0 +1,22 @@
+﻿body{
+  padding: 10px;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax (400px, 1fr));
+  grid-gap: 5px;
+}
+.gallery-img{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax (400px, 1fr));
+  grid-gap: 5px;
+}
+.img{
+  width: 50%;
+  border-radius: 50px;
+}
+.img-box{
+  padding: 10px;
+
+}
