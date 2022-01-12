@@ -1,9 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Manage_gallery extends CI_Controller {
-    var $template='template/index';
+class Manage_gallery extends CI_Controller
+{
+    var $template = 'template/index';
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
 
         // Load form helper and form validation library
@@ -17,15 +19,16 @@ class Manage_gallery extends CI_Controller {
         $this->controller = 'manage_gallery';
     }
 
-    public function index(){
+    public function index()
+    {
         $data = array();
 
         // Get messages from the session
-        if($this->session->userdata('success_msg')){
+        if ($this->session->userdata('success_msg')) {
             $data['success_msg'] = $this->session->userdata('success_msg');
             $this->session->unset_userdata('success_msg');
         }
-        if($this->session->userdata('error_msg')){
+        if ($this->session->userdata('error_msg')) {
             $data['error_msg'] = $this->session->userdata('error_msg');
             $this->session->unset_userdata('error_msg');
         }
@@ -35,33 +38,37 @@ class Manage_gallery extends CI_Controller {
 
         // Load the list page view
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/main', $data);
         $this->load->view('gallery/index', $data);
         $this->load->view('templates/footer');
     }
 
-    public function view($id){
+    public function view($id)
+    {
         $data = array();
 
         // Check whether id is not empty
-        if(!empty($id)){
+        if (!empty($id)) {
             $data['gallery'] = $this->gallery->getRows($id);
             $data['title'] = $data['gallery']['title'];
 
             // Load the details page view
             $this->load->view('templates/header', $data);
+            $this->load->view('templates/main', $data);
             $this->load->view('gallery/view', $data);
             $this->load->view('templates/footer');
-        }else{
+        } else {
             redirect($this->controller);
         }
     }
 
-    public function add(){
+    public function add()
+    {
         $data = $galleryData = array();
         $errorUpload = '';
 
         // If add request is submitted
-        if($this->input->post('imgSubmit')){
+        if ($this->input->post('imgSubmit')) {
             // Form field validation rules
             $this->form_validation->set_rules('title', 'gallery title', 'required');
 
@@ -71,15 +78,15 @@ class Manage_gallery extends CI_Controller {
             );
 
             // Validate submitted form data
-            if($this->form_validation->run() == true){
+            if ($this->form_validation->run() == true) {
                 // Insert gallery data
                 $insert = $this->gallery->insert($galleryData);
                 $galleryID = $insert;
 
-                if($insert){
-                    if(!empty($_FILES['images']['name'])){
+                if ($insert) {
+                    if (!empty($_FILES['images']['name'])) {
                         $filesCount = count($_FILES['images']['name']);
-                        for($i = 0; $i < $filesCount; $i++){
+                        for ($i = 0; $i < $filesCount; $i++) {
                             $_FILES['file']['name']     = $_FILES['images']['name'][$i];
                             $_FILES['file']['type']     = $_FILES['images']['type'][$i];
                             $_FILES['file']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
@@ -96,29 +103,29 @@ class Manage_gallery extends CI_Controller {
                             $this->upload->initialize($config);
 
                             // Upload file to server
-                            if($this->upload->do_upload('file')){
+                            if ($this->upload->do_upload('file')) {
                                 // Uploaded file data
                                 $fileData = $this->upload->data();
                                 $uploadData[$i]['gallery_id'] = $galleryID;
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
                                 $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
-                            }else{
-                                $errorUpload .= $fileImages[$key].'('.$this->upload->display_errors('', '').') | ';
+                            } else {
+                                $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
                             }
                         }
 
                         // File upload error message
-                        $errorUpload = !empty($errorUpload)?' Upload Error: '.trim($errorUpload, ' | '):'';
+                        $errorUpload = !empty($errorUpload) ? ' Upload Error: ' . trim($errorUpload, ' | ') : '';
 
-                        if(!empty($uploadData)){
+                        if (!empty($uploadData)) {
                             // Insert files info into the database
                             $insert = $this->gallery->insertImage($uploadData);
                         }
                     }
 
-                    $this->session->set_userdata('success_msg', 'Gallery has been added successfully.'.$errorUpload);
+                    $this->session->set_userdata('success_msg', 'Gallery has been added successfully.' . $errorUpload);
                     return redirect('Admin/List_upload');
-                }else{
+                } else {
                     $data['error_msg'] = 'Some problems occurred, please try again.';
                 }
             }
@@ -129,18 +136,19 @@ class Manage_gallery extends CI_Controller {
         $data['action'] = 'Add';
 
         // Load the add page view
-		$data['content'] 	='gallery/add-edit';
+        $data['content']     = 'gallery/add-edit';
         $this->load->view($this->template, $data);
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $data = $galleryData = array();
 
         // Get gallery data
         $galleryData = $this->gallery->getRows($id);
 
         // If update request is submitted
-        if($this->input->post('imgSubmit')){
+        if ($this->input->post('imgSubmit')) {
             // Form field validation rules
             $this->form_validation->set_rules('title', 'gallery title', 'required');
 
@@ -150,14 +158,14 @@ class Manage_gallery extends CI_Controller {
             );
 
             // Validate submitted form data
-            if($this->form_validation->run() == true){
+            if ($this->form_validation->run() == true) {
                 // Update gallery data
                 $update = $this->gallery->update($galleryData, $id);
 
-                if($update){
-                    if(!empty($_FILES['images']['name'])){
+                if ($update) {
+                    if (!empty($_FILES['images']['name'])) {
                         $filesCount = count($_FILES['images']['name']);
-                        for($i = 0; $i < $filesCount; $i++){
+                        for ($i = 0; $i < $filesCount; $i++) {
                             $_FILES['file']['name']     = $_FILES['images']['name'][$i];
                             $_FILES['file']['type']     = $_FILES['images']['type'][$i];
                             $_FILES['file']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
@@ -174,29 +182,29 @@ class Manage_gallery extends CI_Controller {
                             $this->upload->initialize($config);
 
                             // Upload file to server
-                            if($this->upload->do_upload('file')){
+                            if ($this->upload->do_upload('file')) {
                                 // Uploaded file data
                                 $fileData = $this->upload->data();
                                 $uploadData[$i]['gallery_id'] = $id;
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
                                 $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
-                            }else{
-                                $errorUpload .= $fileImages[$key].'('.$this->upload->display_errors('', '').') | ';
+                            } else {
+                                $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
                             }
                         }
 
                         // File upload error message
-                        $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):'';
+                        $errorUpload = !empty($errorUpload) ? 'Upload Error: ' . trim($errorUpload, ' | ') : '';
 
-                        if(!empty($uploadData)){
+                        if (!empty($uploadData)) {
                             // Insert files data into the database
                             $insert = $this->gallery->insertImage($uploadData);
                         }
                     }
 
-                    $this->session->set_userdata('success_msg', 'Gallery has been updated successfully.'.$errorUpload);
+                    $this->session->set_userdata('success_msg', 'Gallery has been updated successfully.' . $errorUpload);
                     return redirect('Admin/List_upload');
-                }else{
+                } else {
                     $data['error_msg'] = 'Some problems occurred, please try again.';
                 }
             }
@@ -213,16 +221,17 @@ class Manage_gallery extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function block($id){
+    public function block($id)
+    {
         // Check whether gallery id is not empty
-        if($id){
+        if ($id) {
             // Update gallery status
             $data = array('status' => 0);
             $update = $this->gallery->update($data, $id);
 
-            if($update){
+            if ($update) {
                 $this->session->set_userdata('success_msg', 'Gallery has been blocked successfully.');
-            }else{
+            } else {
                 $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
             }
         }
@@ -230,16 +239,17 @@ class Manage_gallery extends CI_Controller {
         return redirect('Admin/List_upload');
     }
 
-    public function unblock($id){
+    public function unblock($id)
+    {
         // Check whether gallery id is not empty
-        if($id){
+        if ($id) {
             // Update gallery status
             $data = array('status' => 1);
             $update = $this->gallery->update($data, $id);
 
-            if($update){
+            if ($update) {
                 $this->session->set_userdata('success_msg', 'Gallery has been activated successfully.');
-            }else{
+            } else {
                 $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
             }
         }
@@ -247,28 +257,29 @@ class Manage_gallery extends CI_Controller {
         return redirect('Admin/List_upload');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         // Check whether id is not empty
-        if($id){
+        if ($id) {
             $galleryData = $this->gallery->getRows($id);
 
             // Delete gallery data
             $delete = $this->gallery->delete($id);
 
-            if($delete){
+            if ($delete) {
                 // Delete images data
                 $condition = array('gallery_id' => $id);
                 $deleteImg = $this->gallery->deleteImage($condition);
 
                 // Remove files from the server
-                if(!empty($galleryData['images'])){
-                    foreach($galleryData['images'] as $img){
-                        @unlink('uploads/images/'.$img['file_name']);
+                if (!empty($galleryData['images'])) {
+                    foreach ($galleryData['images'] as $img) {
+                        @unlink('uploads/images/' . $img['file_name']);
                     }
                 }
 
                 $this->session->set_userdata('success_msg', 'Gallery has been removed successfully.');
-            }else{
+            } else {
                 $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
             }
         }
@@ -276,10 +287,11 @@ class Manage_gallery extends CI_Controller {
         return redirect('Admin/List_upload');
     }
 
-    public function deleteImage(){
+    public function deleteImage()
+    {
         $status  = 'err';
         // If post request is submitted via ajax
-        if($this->input->post('id')){
+        if ($this->input->post('id')) {
             $id = $this->input->post('id');
             $imgData = $this->gallery->getImgRow($id);
 
@@ -287,12 +299,13 @@ class Manage_gallery extends CI_Controller {
             $con = array('id' => $id);
             $delete = $this->gallery->deleteImage($con);
 
-            if($delete){
+            if ($delete) {
                 // Remove files from the server
-                @unlink('uploads/images/'.$imgData['file_name']);
+                @unlink('uploads/images/' . $imgData['file_name']);
                 $status = 'ok';
             }
         }
-        echo $status;die;
+        echo $status;
+        die;
     }
 }
