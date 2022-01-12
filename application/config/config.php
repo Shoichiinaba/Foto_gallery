@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+date_default_timezone_set("Asia/Jakarta");
 
 /*
 |--------------------------------------------------------------------------
@@ -273,8 +274,8 @@ $config['log_file_permissions'] = 0644;
 | codes to set your own date formatting
 |
 */
-$config['log_date_format'] = 'Y-m-d H:i:s';
-
+// $config['log_date_format'] = 'Y-m-d H:i:s';
+$config['log_date_format'] = 'd F Y H:i:s';
 /*
 |--------------------------------------------------------------------------
 | Error Views Directory Path

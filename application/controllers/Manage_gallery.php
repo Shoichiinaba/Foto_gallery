@@ -108,7 +108,7 @@ class Manage_gallery extends CI_Controller
                                 $fileData = $this->upload->data();
                                 $uploadData[$i]['gallery_id'] = $galleryID;
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
-                                $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
+                                $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
                             } else {
                                 $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
                             }

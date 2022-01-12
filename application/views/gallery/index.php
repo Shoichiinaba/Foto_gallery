@@ -1,20 +1,10 @@
 <main role="main">
-  <section class=" text-center">
-    <div class="container">
-      <h1>Daftar Gallery Foto</h1>
+  <section class=" text-center p-5">
+    <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h1 class="p-5">Daftar Gallery Foto</h1>
       <a href="#" class="btn btn-primary my-3"><?php echo $title; ?></a>
     </div>
   </section>
-  <!-- Display status message -->
-  <?php if (!empty($success_msg)) { ?>
-    <div class="col-xs-12">
-      <div class="alert alert-success"><?php echo $success_msg; ?></div>
-    </div>
-  <?php } elseif (!empty($error_msg)) { ?>
-    <div class="col-xs-12">
-      <div class="alert alert-danger"><?php echo $error_msg; ?></div>
-    </div>
-  <?php } ?>
 
   <!-- Custom Content -->
   <section class="content">
