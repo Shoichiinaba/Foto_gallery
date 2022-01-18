@@ -59,7 +59,7 @@
                                                             <?php }
                                                         } else { ?>
                                                             <tr>
-                                                                <td colspan="6">No gallery found...</td>
+                                                                <td colspan="6">Tidak Ada Gallery...</td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -104,7 +104,7 @@
                                                                 <?php }
                                                             } else { ?>
                                                                 <tr>
-                                                                    <td colspan="6">No gallery found...</td>
+                                                                    <td colspan="6">Tidak Ada Gallery...</td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -149,7 +149,7 @@
                                                             <?php }
                                                         } else { ?>
                                                             <tr>
-                                                                <td colspan="6">No gallery found...</td>
+                                                                <td colspan="6">Tidak Ada Gallery...</td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
