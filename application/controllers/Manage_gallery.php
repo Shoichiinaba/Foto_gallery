@@ -61,7 +61,7 @@ class Manage_gallery extends CI_Controller
         $data['gallery2']   = $this->Katalog_m->get_kategori2();
         $data['gallery3']   = $this->Katalog_m->get_kategori3();
         $data['title']      = 'Gallery Archive';
-        $data['content']    = 'gallery/katalog_prod';
+        $data['content']    = 'gallery/Katalog_prod';
         $this->load->view($this->template, $data);
     }
 
