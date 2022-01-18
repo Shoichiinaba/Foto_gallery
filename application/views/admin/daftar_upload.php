@@ -1,15 +1,14 @@
-<!-- Display status message -->
-<?php if (!empty($success_msg)) { ?>
-    <div class="col-xs-12">
-        <div class="alert alert-success"><?php echo $success_msg; ?></div>
-    </div>
-<?php } elseif (!empty($error_msg)) { ?>
-    <div class="col-xs-12">
-        <div class="alert alert-danger"><?php echo $error_msg; ?></div>
-    </div>
-<?php } ?>
-
 <section class="content">
+    <!-- Display status message -->
+    <?php if (!empty($success_msg)) { ?>
+        <div class="col-xs-12 col-lg-12">
+            <div class="alert alert-success"><?php echo $success_msg; ?></div>
+        </div>
+    <?php } elseif (!empty($error_msg)) { ?>
+        <div class="col-xs-12 col-lg-12">
+            <div class="alert alert-danger"><?php echo $error_msg; ?></div>
+        </div>
+    <?php } ?>
     <div class="container-fluid">
         <div class="block-header">
             <h2><?php echo $title; ?></h2>
@@ -23,8 +22,8 @@
                             Katalog Gallery
                         </h2>
                         <!-- Add link -->
-                        <div class="float-right col-xs-4 col-sm-3 col-md-2 col-lg-2">
-                            <a href="<?php echo base_url('manage_gallery/add'); ?>" class="btn bg-teal btn-block btn-xs waves-effect"><i class="plus"></i>New Gallery</a>
+                        <div class=" icon-and-text-button-demo text-right">
+                            <a href="<?php echo base_url('admin/add'); ?>" class="btn bg-teal btn-xs waves-effect"><i class="material-icons">camera_enhance</i><span>Tambah Gallery</span></a>
                         </div>
                     </div>
                     <div class="body table-responsive">
@@ -56,8 +55,8 @@
                                             <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1) ? 'btn bg-green btn-lg btn-block waves-effect' : 'btn bg-red btn-lg btn-block waves-effect'; ?>"><?php echo ($row['status'] == 1) ? 'Active' : 'Inactive'; ?></span></a></td>
                                             <td>
                                                 <a href="<?php echo base_url('admin/tampil/' . $row['id']); ?>" class="btn btn-primary">Lihat</a>
-                                                <a href="<?php echo base_url('manage_gallery/edit/' . $row['id']); ?>" class="btn btn-warning">Ubah</a>
-                                                <a href="<?php echo base_url('manage_gallery/delete/' . $row['id']); ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">Hapus</a>
+                                                <a href="<?php echo base_url('admin/edit/' . $row['id']); ?>" class="btn btn-warning">Ubah</a>
+                                                <a href="<?php echo base_url('admin/delete/' . $row['id']); ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php }

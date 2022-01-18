@@ -32,13 +32,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="menu-toggle">
-                        <i class="material-icons">swap_calls</i>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">cloud_upload</i>
                         <span>Upload Foto</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="<?php echo site_url('Admin'); ?>">Upload</a>
+                            <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
