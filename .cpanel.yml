@@ -2,6 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPART=/home/u5587213/public_html/sisolusi.id/foto_gallery/
+    - export DEPLOYPART=/home/u5587213/public_html/tokomasbintang.com/foto_gallery/
     - /bin/cp -R application $DEPLOYPART
     - /bin/cp -R assets $DEPLOYPART
     - /bin/cp -R system $DEPLOYPART

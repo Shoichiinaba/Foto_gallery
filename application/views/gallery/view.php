@@ -10,7 +10,7 @@
         <div class="row clearfix">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"></div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="info-box bg-cyan hover-expand-effect">
+                <div class="info-box bg-purple hover-expand-effect">
                     <div class="icon">
                         <i class="material-icons">access_alarm</i>
                     </div>
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <a href="<?php echo base_url('manage_gallery'); ?>">
-                                <button type="button" class="btn bg-orange waves-effect">
+                                <button type="button" class="btn bg-deep-orange waves-effect">
                                     <i class="material-icons">call_missed</i>
                                     <span>Back to List</span>
                                 </button>

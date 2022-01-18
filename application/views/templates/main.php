@@ -14,17 +14,22 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
+    <!-- Bootstrap Core Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/bootstrap/css/bootstrap.css">
     <!-- Waves Effect Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/node-waves/waves.css">
     <!-- Animation Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/animate-css/animate.css">
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="<?= base_url('assets/'); ?>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
     <!-- Light Gallery Plugin Css -->
     <link href="<?= base_url('assets/'); ?>plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
     <!-- Waves Effect Css -->
     <link href="<?= base_url('assets/'); ?>plugins/node-waves/waves.css" rel="stylesheet" />
     <!-- Dropzone Css -->
     <link href="<?= base_url('assets/'); ?>plugins/dropzone/dropzone.css" rel="stylesheet">
+    <!-- Bootstrap Select Css -->
+    <link href="<?= base_url('assets/'); ?>plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
@@ -32,8 +37,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/themes/all-themes.css">
 </head>
 
-<body class="theme-teal ls-closed">
-    <div class="wrapper">
+<body class="theme-black ls-opened ls-closed">
+    <div class="">
         <div>
 </body>
 
@@ -61,13 +66,15 @@
 
 <!-- Custom Js -->
 <script src="<?= base_url('assets/'); ?>js/pages/medias/image-gallery.js"></script>
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
-<!-- ChartJs -->
-<script src="<?= base_url('assets/'); ?>plugins/chartjs/Chart.bundle.js"></script>
-<!-- Sparkline Chart Plugin Js -->
-<script src="<?= base_url('assets/'); ?>plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
-<!-- Custom Js -->
+<!-- Moment Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/momentjs/moment.js"></script>
 <script src="<?= base_url('assets/'); ?>js/admin.js"></script>
+<script src="<?= base_url('assets/'); ?>js/pages/forms/basic-form-elements.js"></script>
+
+<!-- Autosize Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/autosize/autosize.js"></script>
 <!-- Dropzone Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/dropzone/dropzone.js"></script>

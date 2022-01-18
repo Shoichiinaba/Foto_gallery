@@ -2,7 +2,7 @@
 
 class Manage_gallery extends CI_Controller
 {
-    var $template = 'template/index';
+    var $template = 'templates/index';
 
     function __construct()
     {
@@ -14,6 +14,7 @@ class Manage_gallery extends CI_Controller
 
         // Load gallery model
         $this->load->model('gallery');
+        $this->load->model('Katalog_m');
 
         // Default controller name
         $this->controller = 'manage_gallery';
@@ -21,6 +22,29 @@ class Manage_gallery extends CI_Controller
 
     public function index()
     {
+        //--!!design awal!!--
+        // $data = array();
+
+        // // Get messages from the session
+        // if ($this->session->userdata('success_msg')) {
+        //     $data['success_msg'] = $this->session->userdata('success_msg');
+        //     $this->session->unset_userdata('success_msg');
+        // }
+        // if ($this->session->userdata('error_msg')) {
+        //     $data['error_msg'] = $this->session->userdata('error_msg');
+        //     $this->session->unset_userdata('error_msg');
+        // }
+
+        // $data['gallery'] = $this->gallery->getRows();
+        // $data['title'] = 'Katalog Gallery';
+
+        // // Load the list page view
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/main', $data);
+        // $this->load->view('gallery/index', $data);
+        // $this->load->view('templates/footer');
+
+        // design setelah uji exprience dengan user
         $data = array();
 
         // Get messages from the session
@@ -33,15 +57,14 @@ class Manage_gallery extends CI_Controller
             $this->session->unset_userdata('error_msg');
         }
 
-        $data['gallery'] = $this->gallery->getRows();
-        $data['title'] = 'Gallery Archive';
-
-        // Load the list page view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/main', $data);
-        $this->load->view('gallery/index', $data);
-        $this->load->view('templates/footer');
+        $data['gallery']    = $this->Katalog_m->get_kategori1();
+        $data['gallery2']   = $this->Katalog_m->get_kategori2();
+        $data['gallery3']   = $this->Katalog_m->get_kategori3();
+        $data['title']      = 'Gallery Archive';
+        $data['content']    = 'gallery/katalog_prod';
+        $this->load->view($this->template, $data);
     }
+
 
     public function view($id)
     {
@@ -49,16 +72,12 @@ class Manage_gallery extends CI_Controller
 
         // Check whether id is not empty
         if (!empty($id)) {
-            $data['gallery'] = $this->gallery->getRows($id);
+            $data['gallery'] = $this->Katalog_m->getRows($id);
             $data['title'] = $data['gallery']['title'];
-
-            // Load the details page view
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/main', $data);
-            $this->load->view('gallery/view', $data);
-            $this->load->view('templates/footer');
+            $data['content']     = 'gallery/view';
+            $this->load->view($this->template, $data);
         } else {
-            redirect($this->controller);
+            return redirect('Manage_gallery');
         }
     }
 

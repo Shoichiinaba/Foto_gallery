@@ -19,7 +19,22 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data['content']     = 'admin/upload_view';
+        $data = array();
+
+        // Get messages from the session
+        if ($this->session->userdata('success_msg')) {
+            $data['success_msg'] = $this->session->userdata('success_msg');
+            $this->session->unset_userdata('success_msg');
+        }
+        if ($this->session->userdata('error_msg')) {
+            $data['error_msg'] = $this->session->userdata('error_msg');
+            $this->session->unset_userdata('error_msg');
+        }
+
+        // Load the list page view
+        $data['gallery'] = $this->gallery->getRows();
+        $data['title'] = 'Gallery Archive';
+        $data['content'] = 'admin/daftar_upload';
         $this->load->view($this->template, $data);
     }
 
@@ -63,7 +78,7 @@ class Admin extends CI_Controller
         // Load the list page view
         $data['gallery'] = $this->gallery->getRows();
         $data['title'] = 'Gallery Archive';
-        $data['content']     = 'admin/daftar_upload';
+        $data['content'] = 'admin/daftar_upload';
         $this->load->view('templates/header', $data);
         $this->load->view($this->template, $data);
     }
@@ -79,6 +94,21 @@ class Admin extends CI_Controller
             $this->load->view($this->template, $data);
         } else {
             return redirect('Admin/tampil');
+        }
+    }
+
+    public function gal($id)
+    {
+        $data = array();
+
+        // Check whether id is not empty
+        if (!empty($id)) {
+            $data['gallery'] = $this->tes_m->getRows($id);
+            $data['title'] = $data['gallery']['title'];
+            $data['content']     = 'admin/tes_foto';
+            $this->load->view($this->template, $data);
+        } else {
+            return redirect('Admin/gal');
         }
     }
 }
