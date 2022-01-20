@@ -143,7 +143,7 @@ class Katalog_m extends CI_Model
         return $delete ? true : false;
     }
 
-    function get_kategori1($title = 'Kategori 1')
+    function get_kategori1($title = '300')
     {
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
@@ -153,7 +153,7 @@ class Katalog_m extends CI_Model
         return $data->result_array();
     }
 
-    function get_kategori2($title = 'Kategori 2')
+    function get_kategori2($title = '420')
     {
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
@@ -163,7 +163,7 @@ class Katalog_m extends CI_Model
         return $data->result_array();
     }
 
-    function get_kategori3($title = 'Kategori 3')
+    function get_kategori3($title = '700')
     {
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);

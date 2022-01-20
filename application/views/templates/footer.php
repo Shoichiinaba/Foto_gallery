@@ -1,11 +1,4 @@
 </body>
-<!-- javascript -->
-<script src="<?php echo base_url('tamp_public/'); ?>js/bootstrap.min.js"></script>
-<!-- jquery -->
-<script src="<?php echo base_url('tamp_public/'); ?>jquery/jquery-3.2.1.slim.min.js"></script>
-<script src="<?php echo base_url('tamp_public/'); ?>js/holder.min.js"></script>
-
-
 <script>
     function deleteImage(id) {
         var result = confirm("Are you sure to delete?");

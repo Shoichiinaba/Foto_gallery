@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/themes/all-themes.css">
+    <!--WaitMe Css-->
+    <link href="<?= base_url('assets/'); ?>plugins/waitme/waitMe.css" rel="stylesheet">
 </head>
 
 <body class="theme-teal">
@@ -97,3 +99,5 @@
 <script src="<?= base_url('assets/'); ?>plugins/autosize/autosize.js"></script>
 <!-- Dropzone Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/dropzone/dropzone.js"></script>
+<!-- Wait Me Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/waitme/waitMe.js"></script>

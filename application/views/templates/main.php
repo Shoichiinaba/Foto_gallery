@@ -35,11 +35,28 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/themes/all-themes.css">
+
 </head>
 
-<body class="theme-black ls-opened ls-closed">
-    <div class="">
-        <div>
+<body class="theme-black ls-closed">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-black">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
 </body>
 
 </html>

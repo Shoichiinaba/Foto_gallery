@@ -1,16 +1,23 @@
 <section class="content">
-    <?php if (!empty($error_msg)) { ?>
-        <div class="col-xs-12">
-            <div class="alert alert-danger"><?php echo $error_msg; ?></div>
-        </div>
-    <?php } ?>
-    <div class="container-fluid">
-        <div class="block-header">
-            <h2>
-                <h2><?php echo $title; ?></h2>
-            </h2>
+    <div class="clearfix">
+        <?php if (!empty($error_msg)) { ?>
+            <div class="col-xs-12">
+                <div class="alert alert-danger"><?php echo $error_msg; ?></div>
+            </div>
+        <?php } ?>
+    </div>
+    <!-- BREADCRUMBS -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="body">
+                <ol class="breadcrumb breadcrumb-bg-teal align-right">
+                    <li><a href="<?php echo site_url('admin'); ?>"><i class="material-icons">home</i> Dashboard</a></li>
+                    <li><a href="<?php echo site_url('admin/add'); ?>"><i class="material-icons">backup</i> <?php echo $title; ?></a></li>
+                </ol>
+            </div>
         </div>
     </div>
+    <!-- Content -->
     <!-- File Upload | Drag & Drop OR With Click & Choose -->
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -42,7 +49,7 @@
                             <?php } ?>
                         </div>
 
-                        <a href="<?php echo base_url('manage_gallery'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
+                        <a href="<?php echo base_url('admin'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
                         <input type="hidden" name="id" value="<?php echo !empty($gallery['id']) ? $gallery['id'] : ''; ?>">
                         <input type="submit" name="imgSubmit" class="btn bg-green waves-effect" value="Upload">
                     </form>

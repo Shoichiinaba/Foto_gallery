@@ -45,6 +45,20 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">filter_vintage</i>
+                        <span>Admin</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="<?php echo site_url('Admin/add'); ?>">Daftar Admin</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Toko</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Footer -->

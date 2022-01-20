@@ -1,4 +1,6 @@
 <section class="content">
+</section>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="block-header">
         <h2> Katalog Produck</h2>
     </div>
@@ -10,9 +12,9 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                                <li role="presentation" class="active"><a href="#kat1_animation_1" data-toggle="tab">Kategori 1</a></li>
-                                <li role="presentation"><a href="#kat2_animation_2" data-toggle="tab">Kategori 2</a></li>
-                                <li role="presentation"><a href="#kat3_animation_1" data-toggle="tab">Kategori 3</a></li>
+                                <li role="presentation" class="active"><a href="#kat1_animation_1" data-toggle="tab">300</a></li>
+                                <li role="presentation"><a href="#kat2_animation_2" data-toggle="tab">420</a></li>
+                                <li role="presentation"><a href="#kat3_animation_1" data-toggle="tab">700</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -166,4 +168,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

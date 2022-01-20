@@ -19,22 +19,8 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data = array();
-
-        // Get messages from the session
-        if ($this->session->userdata('success_msg')) {
-            $data['success_msg'] = $this->session->userdata('success_msg');
-            $this->session->unset_userdata('success_msg');
-        }
-        if ($this->session->userdata('error_msg')) {
-            $data['error_msg'] = $this->session->userdata('error_msg');
-            $this->session->unset_userdata('error_msg');
-        }
-
-        // Load the list page view
-        $data['gallery'] = $this->gallery->getRows();
-        $data['title'] = 'Gallery Archive';
-        $data['content'] = 'admin/daftar_upload';
+        $data['title'] = 'dashboard';
+        $data['content'] = 'admin/dashboard';
         $this->load->view($this->template, $data);
     }
 
@@ -79,7 +65,6 @@ class Admin extends CI_Controller
         $data['gallery'] = $this->gallery->getRows();
         $data['title'] = 'Gallery Archive';
         $data['content'] = 'admin/daftar_upload';
-        $this->load->view('templates/header', $data);
         $this->load->view($this->template, $data);
     }
     public function tampil($id)
