@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header d-flex justify-content-between">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-            <img src="<?php echo base_url(); ?>assets/images/lg3.png ?>" width="48" height="48" alt="User" />
+            <img src="<?php echo base_url(); ?>assets/images/lg3.png ?>" width="48" height="48" alt="User">
             <strong style="color: aliceblue;">
                 KATALOG
             </strong>
