@@ -31,7 +31,7 @@
                             <!-- Kotak kosong untuk kiri -->
                         </div>
                         <div class="col-lg-4 col-md-9 col-sm-12 col-xs-2 align-center">
-                            <img src="<?php echo base_url(); ?>assets/images/lg2.png ?>" class="text-center" width="100" height="" alt="User" />
+                            <img src="<?php echo base_url(); ?>assets/images/lg2.png" class="text-center" width="100" height="" alt="User" />
                         </div>
                         <div class="col-lg-6 col-xs-5">
                             <!-- Kotak Kosong kanan -->

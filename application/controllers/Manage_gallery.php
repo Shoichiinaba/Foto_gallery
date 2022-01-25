@@ -22,6 +22,25 @@ class Manage_gallery extends CI_Controller
 
     public function index()
     {
+
+        $data = array();
+
+        // Get messages from the session
+        if ($this->session->userdata('success_msg')) {
+            $data['success_msg'] = $this->session->userdata('success_msg');
+            $this->session->unset_userdata('success_msg');
+        }
+        if ($this->session->userdata('error_msg')) {
+            $data['error_msg'] = $this->session->userdata('error_msg');
+            $this->session->unset_userdata('error_msg');
+        }
+
+        $data['toko']    = $this->Katalog_m->get_toko();
+        $data['content']    = 'gallery/home';
+        $this->load->view($this->template, $data);
+    }
+    public function Katalog()
+    {
         //--!!design awal!!--
         // $data = array();
 

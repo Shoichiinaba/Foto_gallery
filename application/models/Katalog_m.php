@@ -172,4 +172,9 @@ class Katalog_m extends CI_Model
         $data = $this->db->get();
         return $data->result_array();
     }
+
+    function get_toko()
+    {
+        return $this->db->get('toko')->result();
+    }
 }
