@@ -30,11 +30,6 @@
                 <div class="body">
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label>Kategory:</label>
-                            <input type="text" name="title" class="form-control" placeholder="Isi Kategori" value="<?php echo !empty($gallery['title']) ? $gallery['title'] : ''; ?>">
-                            <?php echo form_error('title', '<p class="help-block text-danger">', '</p>'); ?>
-                        </div>
-                        <div class="form-group">
                             <label>Gambar:</label>
                             <input type="file" name="images[]" class="form-control" multiple>
                             <?php if (!empty($gallery['images'])) { ?>

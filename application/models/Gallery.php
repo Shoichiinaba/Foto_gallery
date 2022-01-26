@@ -9,14 +9,13 @@ class Gallery extends CI_Model
         $this->imgTbl = 'gallery_images';
     }
 
-    /*
-     * Fetch gallery data from the database
-     * @param id returns a single record if specified, otherwise all records
-     */
+    // Fetch gallery data from the database
     public function getRows($id = '')
     {
+        $id_user = $this->session->userdata('userdata')->role;
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
+        $this->db->where('title', $id_user);
         if ($id) {
             $this->db->where('id', $id);
             $query  = $this->db->get();
@@ -41,10 +40,7 @@ class Gallery extends CI_Model
         return !empty($result) ? $result : false;
     }
 
-    /*
-     * Fetch image data from the database
-     * @param id returns a single record
-     */
+    // Detail Gallery
     public function getImgRow($id)
     {
         $this->db->select('*');
@@ -54,10 +50,7 @@ class Gallery extends CI_Model
         return ($query->num_rows() > 0) ? $query->row_array() : false;
     }
 
-    /*
-     * Insert gallery data into the database
-     * @param $data data to be insert based on the passed parameters
-     */
+
     public function insert($data = array())
     {
         if (!empty($data)) {
@@ -78,10 +71,6 @@ class Gallery extends CI_Model
         return false;
     }
 
-    /*
-     * Insert image data into the database
-     * @param $data data to be insert based on the passed parameters
-     */
     public function insertImage($data = array())
     {
         if (!empty($data)) {
@@ -95,11 +84,6 @@ class Gallery extends CI_Model
         return false;
     }
 
-    /*
-     * Update gallery data into the database
-     * @param $data array to be update based on the passed parameters
-     * @param $id num filter data
-     */
     public function update($data, $id)
     {
         if (!empty($data) && !empty($id)) {
@@ -117,10 +101,6 @@ class Gallery extends CI_Model
         return false;
     }
 
-    /*
-     * Delete gallery data from the database
-     * @param num filter data based on the passed parameter
-     */
     public function delete($id)
     {
         // Delete gallery data
@@ -130,10 +110,6 @@ class Gallery extends CI_Model
         return $delete ? true : false;
     }
 
-    /*
-     * Delete image data from the database
-     * @param array filter data based on the passed parameter
-     */
     public function deleteImage($con)
     {
         // Delete image data

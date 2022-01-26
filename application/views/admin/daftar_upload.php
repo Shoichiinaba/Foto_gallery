@@ -40,10 +40,10 @@
                         <thead>
                             <tr class="bg-cyan">
                                 <th width="5%">#</th>
-                                <th width="20%"></th>
+                                <th width="25%"></th>
                                 <th width="20%">Kategori</th>
                                 <th width="15%">Diupload</th>
-                                <th width="8%">Status</th>
+                                <!-- <th width="8%">Status</th> -->
                                 <th width="20%">Action</th>
                             </tr>
                         </thead>
@@ -61,7 +61,7 @@
                                         <td class="thumbnail"><?php echo $defaultImage; ?></td>
                                         <td><?php echo $row['title']; ?></td>
                                         <td><?php echo $row['created']; ?></td>
-                                        <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1) ? 'btn bg-green btn-lg btn-block waves-effect' : 'btn bg-red btn-lg btn-block waves-effect'; ?>"><?php echo ($row['status'] == 1) ? 'Active' : 'Inactive'; ?></span></a></td>
+                                        <!-- <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1) ? 'btn bg-green btn-lg btn-block waves-effect' : 'btn bg-red btn-lg btn-block waves-effect'; ?>"><?php echo ($row['status'] == 1) ? 'Active' : 'Inactive'; ?></span></a></td> -->
                                         <td>
                                             <a href="<?php echo base_url('admin/tampil/' . $row['id']); ?>" class="btn btn-primary">Lihat</a>
                                             <a href="<?php echo base_url('admin/edit/' . $row['id']); ?>" class="btn btn-warning">Ubah</a>

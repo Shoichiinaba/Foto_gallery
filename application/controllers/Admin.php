@@ -13,7 +13,6 @@ class Admin extends AUTH_Controller
         // Load gallery&admin model
         $this->load->model('gallery');
         $this->load->model('M_admin');
-        // Default controller name
     }
 
     public function index()
@@ -24,29 +23,6 @@ class Admin extends AUTH_Controller
         $this->load->view($this->template, $data);
     }
 
-    function dragDropUpload()
-    {
-        if (!empty($_FILES)) {
-            // File upload configuration
-            $uploadPath = 'uploads/';
-            $config['upload_path'] = $uploadPath;
-            $config['allowed_types'] = '*';
-
-            // Load and initialize upload library
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-
-            // Upload file to the server
-            if ($this->upload->do_upload('file')) {
-                $fileData = $this->upload->data();
-                $uploadData['file_name'] = $fileData['file_name'];
-                $uploadData['uploaded_on'] = date("Y-m-d H:i:s");
-
-                // Insert files info into the database
-                $insert = $this->file->insert($uploadData);
-            }
-        }
-    }
     public function List_upload()
     {
         $data = array();
@@ -83,7 +59,7 @@ class Admin extends AUTH_Controller
             return redirect('Admin/tampil');
         }
     }
-
+    // upload gallery
     public function add()
     {
         $data = $galleryData = array();
@@ -91,16 +67,16 @@ class Admin extends AUTH_Controller
 
         // If add request is submitted
         if ($this->input->post('imgSubmit')) {
-            // Form field validation rules
-            $this->form_validation->set_rules('title', 'gallery title', 'required');
+            $this->form_validation->set_rules('images', 'required');
 
             // Prepare gallery data
             $galleryData = array(
-                'title' => $this->input->post('title')
+                'title' => $this->session->userdata('userdata')->role,
+                'user_id' => $this->session->userdata('userdata')->id
             );
 
             // Validate submitted form data
-            if ($this->form_validation->run() == true) {
+            if (!$this->form_validation->run() == true) {
                 // Insert gallery data
                 $insert = $this->gallery->insert($galleryData);
                 $galleryID = $insert;
@@ -132,7 +108,8 @@ class Admin extends AUTH_Controller
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
                                 $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
                             } else {
-                                $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
+
+                                // $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
                             }
                         }
 
@@ -266,9 +243,9 @@ class Admin extends AUTH_Controller
                     }
                 }
 
-                $this->session->set_userdata('success_msg', 'Gallery has been removed successfully.');
+                $this->session->set_userdata('success_msg', 'Gallery berhasil di hapus.');
             } else {
-                $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
+                $this->session->set_userdata('error_msg', 'ada masalah mohon ulangi lagi.');
             }
         }
 
