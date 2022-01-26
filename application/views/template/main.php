@@ -38,30 +38,41 @@
     <link href="<?= base_url('assets/'); ?>plugins/waitme/waitMe.css" rel="stylesheet">
 </head>
 
-<body class="theme-teal">
-    <div class="wrapper">
-        <!-- Page Loader -->
-        <div class="page-loader-wrapper">
-            <div class="loader">
-                <div class="preloader">
-                    <div class="spinner-layer pl-red">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
+<?php if ($userdata->role == '300') { ?>
+
+    <body class="theme-teal">
+    <?php } elseif ($userdata->role == '420') { ?>
+
+        <body class="theme-green">
+        <?php } elseif ($userdata->role == '700') { ?>
+
+            <body class="theme-light-green">
+            <?php } else { ?>
+
+            <?php } ?>
+            <div class="wrapper">
+                <!-- Page Loader -->
+                <div class="page-loader-wrapper">
+                    <div class="loader">
+                        <div class="preloader">
+                            <div class="spinner-layer pl-red">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
-                        </div>
+                        <p>Please wait...</p>
                     </div>
                 </div>
-                <p>Please wait...</p>
-            </div>
-        </div>
-        <!-- #END# Page Loader -->
-        <!-- Overlay For Sidebars -->
-        <div class="overlay"></div>
-        <!-- #END# Overlay For Sidebars -->
-        <div>
-</body>
+                <!-- #END# Page Loader -->
+                <!-- Overlay For Sidebars -->
+                <div class="overlay"></div>
+                <!-- #END# Overlay For Sidebars -->
+                <div>
+            </body>
 
 </html>
 <!-- Jquery Core Js -->
@@ -101,3 +112,5 @@
 <script src="<?= base_url('assets/'); ?>plugins/dropzone/dropzone.js"></script>
 <!-- Wait Me Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/waitme/waitMe.js"></script>
+<!-- Validation Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/jquery-validation/jquery.validate.js"></script>

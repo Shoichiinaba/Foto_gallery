@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Admin extends AUTH_Controller
 {
     var $template = 'template/index';
     public function __construct()
@@ -9,11 +9,10 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('upload');
-        // Load form helper and form validation library
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        // Load gallery model
+
+        // Load gallery&admin model
         $this->load->model('gallery');
+        $this->load->model('M_admin');
         // Default controller name
     }
 
@@ -21,6 +20,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'dashboard';
         $data['content'] = 'admin/dashboard';
+        $data['userdata'] = $this->userdata;
         $this->load->view($this->template, $data);
     }
 
@@ -64,6 +64,7 @@ class Admin extends CI_Controller
         // Load the list page view
         $data['gallery'] = $this->gallery->getRows();
         $data['title'] = 'Gallery Archive';
+        $data['userdata'] = $this->userdata;
         $data['content'] = 'admin/daftar_upload';
         $this->load->view($this->template, $data);
     }
@@ -76,6 +77,7 @@ class Admin extends CI_Controller
             $data['gallery'] = $this->gallery->getRows($id);
             $data['title'] = $data['gallery']['title'];
             $data['content']     = 'admin/gallery_up';
+            $data['userdata'] = $this->userdata;
             $this->load->view($this->template, $data);
         } else {
             return redirect('Admin/tampil');
@@ -157,6 +159,7 @@ class Admin extends CI_Controller
 
         // Load the add page view
         $data['content']     = 'admin/add-edit';
+        $data['userdata'] = $this->userdata;
         $this->load->view($this->template, $data);
     }
 
@@ -234,6 +237,7 @@ class Admin extends CI_Controller
         $data['gallery'] = $galleryData;
         $data['title'] = 'Update Gallery';
         $data['action'] = 'Edit';
+        $data['userdata'] = $this->userdata;
 
         // Load the edit page view
         $this->load->view('templates/header', $data);
