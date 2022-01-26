@@ -189,7 +189,7 @@ class Admin extends AUTH_Controller
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
                                 $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
                             } else {
-                                $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
+                                // $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
                             }
                         }
 
@@ -216,10 +216,10 @@ class Admin extends AUTH_Controller
         $data['action'] = 'Edit';
         $data['userdata'] = $this->userdata;
 
-        // Load the edit page view
-        $this->load->view('templates/header', $data);
-        $this->load->view('gallery/add-edit', $data);
-        $this->load->view('templates/footer');
+        // Load the add page view
+        $data['content']     = 'admin/add-edit';
+        $data['userdata'] = $this->userdata;
+        $this->load->view($this->template, $data);
     }
 
     public function delete($id)

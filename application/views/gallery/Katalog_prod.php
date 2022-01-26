@@ -12,9 +12,22 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                                <li role="presentation" class="active"><a href="#kat1_animation_1" data-toggle="tab">300</a></li>
-                                <li role="presentation"><a href="#kat2_animation_2" data-toggle="tab">420</a></li>
-                                <li role="presentation"><a href="#kat3_animation_1" data-toggle="tab">700</a></li>
+                                <li role="presentation" class="active">
+                                    <a href="#kat1_animation_1" data-toggle="tab">
+                                        <i class="material-icons">photo_album</i> 300
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#kat2_animation_2" data-toggle="tab">
+                                        <i class="material-icons">photo_filter</i> 420
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#kat3_animation_1" data-toggle="tab">
+                                        <i class="material-icons">photo_library</i> 700
+                                    </a>
+                                </li>
+
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
