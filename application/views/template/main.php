@@ -114,3 +114,8 @@
 <script src="<?= base_url('assets/'); ?>plugins/waitme/waitMe.js"></script>
 <!-- Validation Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/jquery-validation/jquery.validate.js"></script>
+<script>
+    lightGallery(document.getElementById('animated-thumbnails-gallery'), {
+        thumbnail: true,
+    });
+</script>

@@ -2,7 +2,7 @@
 </section>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="block-header">
-        <h2> Katalog Produck</h2>
+        <h2> Katalog Product</h2>
     </div>
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -34,7 +34,7 @@
                                     <?php if (!empty($gallery['images'])) { ?>
                                         <?php foreach ($gallery['images'] as $imgRow) { ?>
                                             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                <a href="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>" data-sub-html="Demo Description">
+                                                <a href="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>" data-sub-html="Foto By: Toko Mas Bintang">
                                                     <img class="img-responsive thumbnail" src="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>">
                                                 </a>
                                             </div>
