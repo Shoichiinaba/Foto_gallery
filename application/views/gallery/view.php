@@ -42,12 +42,12 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <a href="<?php echo base_url('manage_gallery/katalog'); ?>">
+                            <!-- <a href="<?php echo base_url('manage_gallery/katalog'); ?>">
                                 <button type="button" class="btn bg-deep-orange waves-effect">
                                     <i class="material-icons">call_missed</i>
                                     <span>Back to List</span>
                                 </button>
-                            </a>
+                            </a> -->
                             <div class="row">
                             </div>
                         </div>

@@ -54,39 +54,55 @@ class Katalog_m extends CI_Model
         return ($query->num_rows() > 0) ? $query->row_array() : false;
     }
 
-
-    function get_kategori1($title = '300')
-    {
-        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
-        $this->db->from($this->galleryTbl);
-        $this->db->where('title', $title);
-        $this->db->order_by('id', 'desc');
-        $data = $this->db->get();
-        return $data->result_array();
-    }
-
-    function get_kategori2($title = '420')
-    {
-        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
-        $this->db->from($this->galleryTbl);
-        $this->db->where('title', $title);
-        $this->db->order_by('id', 'desc');
-        $data = $this->db->get();
-        return $data->result_array();
-    }
-
-    function get_kategori3($title = '700')
-    {
-        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
-        $this->db->from($this->galleryTbl);
-        $this->db->where('title', $title);
-        $this->db->order_by('id', 'desc');
-        $data = $this->db->get();
-        return $data->result_array();
-    }
-
     function get_toko()
     {
         return $this->db->get('toko')->result();
+    }
+    // pencarian live
+    function fetch_data($query, $title = '75')
+    {
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($query != '') {
+            $this->db->like('created', $query);
+        }
+        $this->db->order_by('created', 'DESC');
+        return $this->db->get();
+    }
+
+    function fetch_data2($query, $title = '300')
+    {
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($query != '') {
+            $this->db->like('created', $query);
+        }
+        $this->db->order_by('created', 'DESC');
+        return $this->db->get();
+    }
+
+    function fetch_data3($query, $title = '420')
+    {
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($query != '') {
+            $this->db->like('created', $query);
+        }
+        $this->db->order_by('created', 'DESC');
+        return $this->db->get();
+    }
+    function fetch_data4($query, $title = '700')
+    {
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($query != '') {
+            $this->db->like('created', $query);
+        }
+        $this->db->order_by('created', 'DESC');
+        return $this->db->get();
     }
 }

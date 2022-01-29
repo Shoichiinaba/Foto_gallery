@@ -63,7 +63,7 @@
                                         <td><?php echo $row['created']; ?></td>
                                         <!-- <td><a href="<?php echo $statusLink; ?>" title="<?php echo $statusTooltip; ?>"><span class="badge <?php echo ($row['status'] == 1) ? 'btn bg-green btn-lg btn-block waves-effect' : 'btn bg-red btn-lg btn-block waves-effect'; ?>"><?php echo ($row['status'] == 1) ? 'Active' : 'Inactive'; ?></span></a></td> -->
                                         <td>
-                                            <a href="<?php echo base_url('admin/tampil/' . $row['id']); ?>" class="btn btn-primary">Lihat</a>
+                                            <a href="<?php echo base_url('Manage_gallery/view/' . $row['id']); ?>" class="btn btn-primary">Lihat</a>
                                             <a href="<?php echo base_url('admin/edit/' . $row['id']); ?>" class="btn btn-warning">Ubah</a>
                                             <a href="<?php echo base_url('admin/delete/' . $row['id']); ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete data?')?true:false;">Hapus</a>
                                         </td>

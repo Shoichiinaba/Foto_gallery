@@ -39,6 +39,7 @@ class Manage_gallery extends CI_Controller
         $data['content']    = 'gallery/home';
         $this->load->view($this->template, $data);
     }
+
     public function Katalog()
     {
         //--!!design awal!!--
@@ -64,21 +65,7 @@ class Manage_gallery extends CI_Controller
         // $this->load->view('templates/footer');
 
         // design setelah uji exprience dengan user
-        $data = array();
 
-        // Get messages from the session
-        if ($this->session->userdata('success_msg')) {
-            $data['success_msg'] = $this->session->userdata('success_msg');
-            $this->session->unset_userdata('success_msg');
-        }
-        if ($this->session->userdata('error_msg')) {
-            $data['error_msg'] = $this->session->userdata('error_msg');
-            $this->session->unset_userdata('error_msg');
-        }
-
-        $data['gallery']    = $this->Katalog_m->get_kategori1();
-        $data['gallery2']   = $this->Katalog_m->get_kategori2();
-        $data['gallery3']   = $this->Katalog_m->get_kategori3();
         $data['title']      = 'Gallery Archive';
         $data['content']    = 'gallery/Katalog_prod';
         $this->load->view($this->template, $data);
@@ -98,5 +85,166 @@ class Manage_gallery extends CI_Controller
         } else {
             return redirect('Manage_gallery');
         }
+    }
+
+    // coding untuk live search di halaman depan
+    function filter()
+    {
+        $output = '';
+        $query = '';
+        $this->load->model('Katalog_m');
+        if ($this->input->post('query')) {
+            $query = $this->input->post('query');
+        }
+        $data = $this->Katalog_m->fetch_data($query);
+        $output .= '
+        <div class="body table-responsive">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="bg-indigo">
+                    <th width="10%">Gambar</th>
+                    <th width="15%">Diupload</th>
+                    <th width="20%">Action</th>
+                </tr>
+        ';
+        if ($data->num_rows() > 0) {
+            foreach ($data->result() as $row) {
+                $defaultImage = (strlen($row->default_image) > 0) ? '<img src="' . base_url() . 'uploads/images/' . $row->default_image . '" alt="" />' : '';
+                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-indigo waves-effect'>Lihat</a>";
+                $output .= '
+                        <tr>
+                        <td class="thumbnail">' . $defaultImage . '</td>
+                        <td>' . $row->created . '</td>
+                        <td>' . $action . '</td>
+                        </tr>
+                ';
+            }
+        } else {
+            $output .= '<tr>
+                            <td colspan="5"> Data Tidak Ditemukan </td>
+                        </tr>';
+        }
+        $output .= '</table></div>';
+        echo $output;
+    }
+
+    function filter2()
+    {
+        $output = '';
+        $query = '';
+        $this->load->model('Katalog_m');
+        if ($this->input->post('query')) {
+            $query = $this->input->post('query');
+        }
+        $data = $this->Katalog_m->fetch_data2($query);
+        $output .= '
+        <div class="body table-responsive">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="bg-cyan">
+                    <th width="10%">Gambar</th>
+                    <th width="25%">Diupload</th>
+                    <th width="20%">Action</th>
+                </tr>
+        ';
+        if ($data->num_rows() > 0) {
+            foreach ($data->result() as $row) {
+                $defaultImage = (strlen($row->default_image) > 0) ? '<img src="' . base_url() . 'uploads/images/' . $row->default_image . '" alt="" />' : '';
+                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-cyan waves-effect'>Lihat</a>";
+                $output .= '
+                        <tr>
+                        <td class="thumbnail">' . $defaultImage . '</td>
+                        <td>' . $row->created . '</td>
+                        <td>' . $action . '</td>
+                        </tr>
+                ';
+            }
+        } else {
+            $output .= '<tr>
+                            <td colspan="5"> Data Tidak Ditemukan </td>
+                        </tr>';
+        }
+        $output .= '</table></div>';
+        echo $output;
+    }
+
+    function filter3()
+    {
+        $output = '';
+        $query = '';
+        $this->load->model('Katalog_m');
+        if ($this->input->post('query')) {
+            $query = $this->input->post('query');
+        }
+        $data = $this->Katalog_m->fetch_data3($query);
+        $output .= '
+        <div class="body table-responsive">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="bg-blue">
+                    <th width="10%">Gambar</th>
+                    <th width="25%">Diupload</th>
+                    <th width="20%">Action</th>
+                </tr>
+        ';
+        if ($data->num_rows() > 0) {
+            foreach ($data->result() as $row) {
+                $defaultImage = (strlen($row->default_image) > 0) ? '<img src="' . base_url() . 'uploads/images/' . $row->default_image . '" alt="" />' : '';
+                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-blue waves-effect'>Lihat</a>";
+                $output .= '
+                        <tr>
+                        <td class="thumbnail">' . $defaultImage . '</td>
+                        <td>' . $row->created . '</td>
+                        <td>' . $action . '</td>
+                        </tr>
+                ';
+            }
+        } else {
+            $output .= '<tr>
+                            <td colspan="5"> Data Tidak Ditemukan </td>
+                        </tr>';
+        }
+        $output .= '</table></div>';
+        echo $output;
+    }
+
+    function filter4()
+    {
+        $output = '';
+        $query = '';
+        $this->load->model('Katalog_m');
+        if ($this->input->post('query')) {
+            $query = $this->input->post('query');
+        }
+        $data = $this->Katalog_m->fetch_data4($query);
+        $output .= '
+        <div class="body table-responsive">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="bg-light-blue">
+                    <th width="10%">Gambar</th>
+                    <th width="25%">Diupload</th>
+                    <th width="20%">Action</th>
+                </tr>
+        ';
+        if ($data->num_rows() > 0) {
+            foreach ($data->result() as $row) {
+                $defaultImage = (strlen($row->default_image) > 0) ? '<img src="' . base_url() . 'uploads/images/' . $row->default_image . '" alt="" />' : '';
+                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-light-blue waves-effect'>Lihat</a>";
+                $output .= '
+                        <tr>
+                        <td class="thumbnail">' . $defaultImage . '</td>
+                        <td>' . $row->created . '</td>
+                        <td>' . $action . '</td>
+                        </tr>
+                ';
+            }
+        } else {
+            $output .= '<tr>
+                            <td colspan="5"> Data Tidak Ditemukan </td>
+                        </tr>';
+        }
+        $output .= '</table></div>';
+        echo $output;
     }
 }

@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Welcome To | Katalog Gallery</title>
     <!-- Favicon-->
-    <link rel="icon" href="<?= base_url('assets/') ?>images/loggal2.ico">
+    <link rel="icon" href="<?= base_url('assets/') ?>images/lg3.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -15,16 +15,28 @@
 
     <!-- Bootstrap Core Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/bootstrap/css/bootstrap.css">
+
+    <!-- Waves Effect Css -->
+    <link href="<?= base_url('assets/'); ?>plugins/node-waves/waves.css" rel="stylesheet" />
+
     <!-- Animation Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/animate-css/animate.css">
+
     <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="<?= base_url('assets/'); ?>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/'); ?>plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="<?= base_url('assets/'); ?>plugins/waitme/waitMe.css" rel="stylesheet" />
+
     <!-- Light Gallery Plugin Css -->
     <link href="<?= base_url('assets/'); ?>plugins/light-gallery/css/lightgallery.css" rel="stylesheet">
+
     <!-- Bootstrap Select Css -->
     <link href="<?= base_url('assets/'); ?>plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
+
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/themes/all-themes.css">
 
@@ -32,7 +44,7 @@
 
 <body class="theme-black ls-closed">
     <!-- Page Loader -->
-    <!-- <div class="page-loader-wrapper">
+    <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-black">
@@ -46,7 +58,7 @@
             </div>
             <p>Please wait...</p>
         </div>
-    </div> -->
+    </div>
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
 </body>
@@ -64,17 +76,22 @@
 <!-- Slimscroll Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-<!-- Light Gallery Plugin Js -->
-<script src="<?= base_url('assets/'); ?>plugins/light-gallery/js/lightgallery-all.js"></script>
-
-<!-- Custom Js -->
-<script src="<?= base_url('assets/'); ?>js/pages/medias/image-gallery.js"></script>
-<!-- Bootstrap Material Datetime Picker Plugin Js -->
-<script src="<?= base_url('assets/'); ?>plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-
-<!-- Moment Plugin Js -->
-<script src="<?= base_url('assets/'); ?>js/admin.js"></script>
-<script src="<?= base_url('assets/'); ?>js/pages/forms/basic-form-elements.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/node-waves/waves.js"></script>
 
 <!-- Autosize Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/autosize/autosize.js"></script>
+
+<!-- Moment Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/momentjs/moment.js"></script>
+
+<!-- Light Gallery Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/light-gallery/js/lightgallery-all.js"></script>
+
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="<?= base_url('assets/'); ?>plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+<!-- Custom Js -->
+<script src="<?= base_url('assets/'); ?>js/admin.js"></script>
+<script src="<?= base_url('assets/'); ?>js/pages/medias/image-gallery.js"></script>
+<script src="<?= base_url('assets/'); ?>js/pages/forms/basic-form-elements.js"></script>

@@ -52,10 +52,10 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="<?php echo site_url(''); ?>">Daftar Admin</a>
+                            <a href="<?php echo site_url('Admin'); ?>">Daftar Admin</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url(''); ?>">Daftar Toko</a>
+                            <a href="<?php echo site_url('Admin'); ?>">Daftar Toko</a>
                         </li>
                     </ul>
                 </li>
