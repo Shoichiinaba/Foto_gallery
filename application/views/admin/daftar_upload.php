@@ -30,10 +30,12 @@
                     <h2>
                         Katalog Gallery
                     </h2>
-                    <!-- Add link -->
-                    <div class=" icon-and-text-button-demo text-right">
-                        <a href="<?php echo base_url('admin/add'); ?>" class="btn bg-teal btn-xs waves-effect"><i class="material-icons">camera_enhance</i><span>Tambah Gallery</span></a>
-                    </div>
+                    <ul class="header-dropdown m-r--5">
+                        <!-- Add link -->
+                        <div class=" icon-and-text-button-demo text-right">
+                            <a href="<?php echo base_url('admin/add'); ?>" class="btn bg-teal btn-xs waves-effect"><i class="material-icons">camera_enhance</i><span>Tambah Gallery</span></a>
+                        </div>
+                    </ul>
                 </div>
                 <div class="body table-responsive">
                     <table class="table table-condensed">

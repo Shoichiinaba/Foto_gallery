@@ -47,16 +47,16 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">filter_vintage</i>
+                        <i class="material-icons">account_box</i>
                         <span>Admin</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="<?php echo site_url('Admin'); ?>">Daftar Admin</a>
+                            <a href="<?php echo site_url('Admin/list_admin'); ?>">Daftar Admin</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo site_url('Admin'); ?>">Daftar Toko</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
             </ul>

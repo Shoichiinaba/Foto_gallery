@@ -37,7 +37,7 @@
                                     <?php foreach ($gallery['images'] as $imgRow) { ?>
                                         <div class="img-box" id="imgb_<?php echo $imgRow['id']; ?>">
                                             <img src="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>">
-                                            <a href="javascript:void(0);" class="badge badge-danger" onclick="deleteImage('<?php echo $imgRow['id']; ?>')">delete</a>
+                                            <a href="<?php echo base_url('admin/deleteImage/' . $imgRow['id']); ?>" class="badge badge-danger" onclick="deleteImage('<?php echo $imgRow['id']; ?>')">delete</a>
                                         </div>
                                     <?php } ?>
                                 </div>

@@ -104,6 +104,7 @@ class Admin extends AUTH_Controller
                             if ($this->upload->do_upload('file')) {
                                 // Uploaded file data
                                 $fileData = $this->upload->data();
+                                $this->resizeImage($fileData['file_name']);
                                 $uploadData[$i]['gallery_id'] = $galleryID;
                                 $uploadData[$i]['file_name'] = $fileData['file_name'];
                                 $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
@@ -138,6 +139,27 @@ class Admin extends AUTH_Controller
         $data['content']     = 'admin/add-edit';
         $data['userdata'] = $this->userdata;
         $this->load->view($this->template, $data);
+    }
+
+    public function resizeImage($filename)
+    {
+        $source_path = 'uploads/images/' . $filename;
+        $target_path = 'uploads/images/';
+        $config = [
+            'image_library' => 'gd2',
+            'source_image' => $source_path,
+            'new_image' => $target_path,
+            'maintain_ratio' => TRUE,
+            'quality' => '20%',
+            // 'width' => 500,
+            // 'height' => 500,
+        ];
+        $this->load->library('image_lib', $config);
+        if (!$this->image_lib->resize()) {
+            echo ($this->image_lib->display_errors());
+        }
+        $this->image_lib->clear();
+        // die('berhasil');
     }
 
     public function edit($id)
@@ -274,39 +296,72 @@ class Admin extends AUTH_Controller
         die;
     }
 
-    public function block($id)
+    public function tambah_admin()
     {
-        // Check whether gallery id is not empty
-        if ($id) {
-            // Update gallery status
-            $data = array('status' => 0);
-            $update = $this->gallery->update($data, $id);
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[admin.username]', [
+            'is_unique' => 'Username sudah terdaftar!'
+        ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password harus sama!',
+            'min_length' => 'Password terlalu pendek!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[admin.email]', [
+            'is_unique' => 'email sudah terdaftar!'
+        ]);
+        $this->form_validation->set_rules('role', 'Role', 'required|trim');
 
-            if ($update) {
-                $this->session->set_userdata('success_msg', 'Gallery has been blocked successfully.');
-            } else {
-                $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
-            }
+        if ($this->form_validation->run() == false) {
+            // $this->session->set_flashdata('error', "Maaf Anda Gagal Registrasi");
+            // redirect('admin/tambah_admin');
+
+            $data['title']    = 'Daftar Admin Baru';
+            $data['content']  = 'admin/daftar';
+            $data['userdata'] = $this->userdata;
+            $this->load->view($this->template, $data);
+        } else {
+
+            $data = [
+
+                'username' => $this->input->post('username'),
+                'password' => md5($this->input->post('password1')),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'foto' => 'default.png',
+                'role' => $this->input->post('role'),
+                'dibuat' => date("Y-m-d H:i:s"),
+            ];
+            $this->db->insert('admin', $data);
+            $this->session->set_flashdata('success_msg', 'Data Admin Baru Berhasil Ditambahkan');
+            redirect('admin/list_admin');
         }
-
-        return redirect('Admin/List_upload');
     }
 
-    public function unblock($id)
+    public function list_admin()
     {
-        // Check whether gallery id is not empty
-        if ($id) {
-            // Update gallery status
-            $data = array('status' => 1);
-            $update = $this->gallery->update($data, $id);
+        $data = array();
 
-            if ($update) {
-                $this->session->set_userdata('success_msg', 'Gallery has been activated successfully.');
-            } else {
-                $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
-            }
+        // Get messages from the session
+        if ($this->session->userdata('success_msg')) {
+            $data['success_msg'] = $this->session->userdata('success_msg');
+            $this->session->unset_userdata('success_msg');
+        }
+        if ($this->session->userdata('error_msg')) {
+            $data['error_msg'] = $this->session->userdata('error_msg');
+            $this->session->unset_userdata('error_msg');
         }
 
-        return redirect('Admin/List_upload');
+        $data['title']      = 'Daftar Admin Baru';
+        $data['content']    = 'admin/list_admin';
+        $data['list']       = $this->M_admin->get_data_admin();
+        $data['userdata']   = $this->userdata;
+        $this->load->view($this->template, $data);
+    }
+    function hapus_admin($params = '')
+    {
+        $this->M_admin->hapus($params);
+        $this->session->set_userdata('success_msg', 'Data Admin Berhasil dihapus.');
+        return redirect('Admin/list_admin');
     }
 }
