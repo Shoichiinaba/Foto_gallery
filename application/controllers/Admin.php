@@ -8,6 +8,7 @@ class Admin extends AUTH_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('string');
         $this->load->library('upload');
 
         // Load gallery&admin model
@@ -81,6 +82,7 @@ class Admin extends AUTH_Controller
                 $insert = $this->gallery->insert($galleryData);
                 $galleryID = $insert;
 
+                $errorsData = [];
                 if ($insert) {
                     if (!empty($_FILES['images']['name'])) {
                         $filesCount = count($_FILES['images']['name']);
@@ -91,33 +93,42 @@ class Admin extends AUTH_Controller
                             $_FILES['file']['error']    = $_FILES['images']['error'][$i];
                             $_FILES['file']['size']     = $_FILES['images']['size'][$i];
 
+                            $pathName = $_FILES['file']['name'];
+
                             // File upload configuration
                             $uploadPath = 'uploads/images/';
+                            $config['file_name'] = random_string('alnum', 16) . '_' . $pathName . '.' . pathinfo($pathName, PATHINFO_EXTENSION);
                             $config['upload_path'] = $uploadPath;
                             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-
                             // Load and initialize upload library
                             $this->load->library('upload', $config);
                             $this->upload->initialize($config);
 
                             // Upload file to server
-                            if ($this->upload->do_upload('file')) {
+                            if (!$this->upload->do_upload('file')) {
                                 // Uploaded file data
-                                $fileData = $this->upload->data();
-                                $this->resizeImage($fileData['file_name']);
-                                $uploadData[$i]['gallery_id'] = $galleryID;
-                                $uploadData[$i]['file_name'] = $fileData['file_name'];
-                                $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
+                                $error = [
+                                    'status' => 'Upload Error',
+                                    'message' => $this->upload->display_errors()
+                                ];
+                                $errorsData[] = $error;
                             } else {
-
-                                // $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
+                                $fileData = $this->upload->data();
+                                $compressImage = $this->resizeImage($fileData['file_name']);
+                                if (is_array($compressImage) && ($compressImage['status'] == 'error compress')) {
+                                    $errorsData[] = $compressImage;
+                                } else {
+                                    $uploadData[$i]['gallery_id'] = $galleryID;
+                                    $uploadData[$i]['file_name'] = $fileData['file_name'];
+                                    $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
+                                }
                             }
-                        }
+                        } // end for
 
                         // File upload error message
                         $errorUpload = !empty($errorUpload) ? ' Upload Error: ' . trim($errorUpload, ' | ') : '';
 
-                        if (!empty($uploadData)) {
+                        if (!empty($uploadData) && (count($errorsData) == 0)) {
                             // Insert files info into the database
                             $insert = $this->gallery->insertImage($uploadData);
                         }
@@ -126,9 +137,9 @@ class Admin extends AUTH_Controller
                     $this->session->set_userdata('success_msg', 'Gallery Baru Berhasil Ditambahkan.' . $errorUpload);
                     return redirect('Admin/List_upload');
                 } else {
-                    $data['error_msg'] = 'Some problems occurred, please try again.';
+                    $data['error_msg'] = 'Ada masalah dalam proses Upload, Mohon Ulangi Lagi.';
                 }
-            }
+            } // end if validation
         }
 
         $data['gallery'] = $galleryData;
@@ -156,15 +167,20 @@ class Admin extends AUTH_Controller
         ];
         $this->load->library('image_lib', $config);
         if (!$this->image_lib->resize()) {
-            echo ($this->image_lib->display_errors());
+            return [
+                'status' => 'error compress',
+                'message' => $this->image_lib->display_errors()
+            ];
         }
         $this->image_lib->clear();
+        return 1;
         // die('berhasil');
     }
 
     public function edit($id)
     {
         $data = $galleryData = array();
+        $errorUpload = '';
 
         // Get gallery data
         $galleryData = $this->gallery->getRows($id);

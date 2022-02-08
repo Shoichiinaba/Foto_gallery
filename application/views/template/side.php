@@ -25,40 +25,108 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active">
-                    <a href="<?php echo site_url('admin'); ?>">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">cloud_upload</i>
-                        <span>Upload Foto</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">account_box</i>
-                        <span>Admin</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="<?php echo site_url('Admin/list_admin'); ?>">Daftar Admin</a>
-                        </li>
-                        <!-- <li>
+                <?php if ($userdata->role == '75') { ?>
+                    <li class="active">
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">cloud_upload</i>
+                            <span>Upload Foto</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } elseif ($userdata->role == '300') { ?>
+                    <li class="active">
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">cloud_upload</i>
+                            <span>Upload Foto</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } elseif ($userdata->role == '420') { ?>
+                    <li class="active">
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">cloud_upload</i>
+                            <span>Upload Foto</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } elseif ($userdata->role == '700') { ?>
+                    <li class="active">
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">cloud_upload</i>
+                            <span>Upload Foto</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } elseif ($userdata->role == 'Spv') { ?>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">account_box</i>
+                            <span>Admin</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/list_admin'); ?>">Daftar Admin</a>
+                            </li>
+                            <!-- <li>
                             <a href="<?php echo site_url('Admin'); ?>">Daftar Toko</a>
                         </li> -->
-                    </ul>
-                </li>
+                        </ul>
+                    <?php } else { ?>
+
+                    <?php } ?>
+                    </li>
             </ul>
         </div>
         <!-- Footer -->

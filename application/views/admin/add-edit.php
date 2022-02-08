@@ -1,7 +1,11 @@
 <section class="content">
     <div class="clearfix">
-        <?php if (!empty($error_msg)) { ?>
-            <div class="col-xs-12">
+        <?php if (!empty($success_msg)) { ?>
+            <div class="col-xs-12 col-lg-12">
+                <div class="alert alert-success"><?php echo $success_msg; ?></div>
+            </div>
+        <?php } elseif (!empty($error_msg)) { ?>
+            <div class="col-xs-12 col-lg-12">
                 <div class="alert alert-danger"><?php echo $error_msg; ?></div>
             </div>
         <?php } ?>
@@ -31,12 +35,12 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Gambar:</label>
-                            <input type="file" name="images[]" class="form-control" multiple>
+                            <input type="file" name="images[]" class="form-control" max="80" multiple>
                             <?php if (!empty($gallery['images'])) { ?>
                                 <div class="gallery-img">
                                     <?php foreach ($gallery['images'] as $imgRow) { ?>
                                         <div class="img-box" id="imgb_<?php echo $imgRow['id']; ?>">
-                                            <img src="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>">
+                                            <img class="img-responsive thumbnail" src="<?php echo base_url('uploads/images/' . $imgRow['file_name']); ?>">
                                             <a href="<?php echo base_url('admin/deleteImage/' . $imgRow['id']); ?>" class="badge badge-danger" onclick="deleteImage('<?php echo $imgRow['id']; ?>')">delete</a>
                                         </div>
                                     <?php } ?>
@@ -46,10 +50,20 @@
 
                         <a href="<?php echo base_url('admin'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
                         <input type="hidden" name="id" value="<?php echo !empty($gallery['id']) ? $gallery['id'] : ''; ?>">
-                        <input type="submit" name="imgSubmit" class="btn bg-green waves-effect" value="Upload">
+                        <input type="submit" name="imgSubmit" id="upload" class="btn bg-green waves-effect" data-loading-text=" Loading..." value="Upload">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<!-- loading button -->
+<script>
+    $('#upload').on('click', function() {
+        var $btn = $(this).button('loading')
+        // business logic...
+        $btn.button('loading')
+    })
+</script>
