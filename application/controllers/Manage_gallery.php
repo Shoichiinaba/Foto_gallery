@@ -230,7 +230,7 @@ class Manage_gallery extends CI_Controller
         if ($data->num_rows() > 0) {
             foreach ($data->result() as $row) {
                 $defaultImage = (strlen($row->default_image) > 0) ? '<img src="' . base_url() . 'uploads/images/' . $row->default_image . '" alt="" />' : '';
-                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-light-blue waves-effect'>Lihat <span class='badge'>47</span></a>";
+                $action = "<a href='" . base_url('Manage_gallery/view/' . $row->id) . "' class='btn bg-light-blue waves-effect'>Lihat </a>";
                 $output .= '
                         <tr>
                         <td class="thumbnail">' . $defaultImage . '</td>

@@ -2,7 +2,7 @@
     <div class="row clearfix">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <div class="panel-group" id="accordion_17" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-col-black">
+                <div class="panel panel-col-purple">
                     <div class="panel-heading" role="tab" id="headingOne_17">
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion_17" href="#collapseOne_17" aria-expanded="true" aria-controls="collapseOne_17">
@@ -17,7 +17,7 @@
                                 foreach ($toko as $g) : $no++; ?>
                                     <a href="<?php echo site_url('manage_gallery/katalog/'); ?>">
                                         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 p-b-10">
-                                            <button class="btn bg-black btn-lg btn-block waves-effect" type="button">
+                                            <button class="btn bg-purple btn-lg btn-block waves-effect" type="button">
                                                 <i class=" material-icons">store</i>
                                                 <span><?php echo $g->nama_toko; ?></span>
                                             </button>

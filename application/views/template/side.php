@@ -110,6 +110,26 @@
                         </ul>
                     </li>
                 <?php } elseif ($userdata->role == 'Spv') { ?>
+                    <li class="active">
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">cloud_upload</i>
+                            <span>Upload Foto</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">account_box</i>

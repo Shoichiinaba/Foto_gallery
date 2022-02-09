@@ -14,7 +14,7 @@
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="body">
-                <ol class="breadcrumb breadcrumb-bg-teal align-right">
+                <ol class="breadcrumb breadcrumb-bg-indigo align-right">
                     <li><a href="<?php echo site_url('admin'); ?>"><i class="material-icons">home</i> Dashboard</a></li>
                     <li><a href="<?php echo site_url('admin/list_admin'); ?>"><i class="material-icons">account_box</i> Liat Admin</a></li>
                 </ol>
@@ -30,7 +30,7 @@
                         List Admin
                     </h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="<?php echo site_url('Admin/tambah_admin'); ?>" type="button" class="btn btn-success btn-xs waves-effect">
+                        <a href="<?php echo site_url('Admin/tambah_admin'); ?>" type="button" class="btn bg-deep-purple btn-xs waves-effect">
                             <i class="material-icons">person_add</i>
                             <span>Tambah Admin</span>
                         </a>
@@ -61,7 +61,7 @@
                                         <td><?php echo $g->dibuat; ?></td>
                                         <td><?php echo $g->diubah; ?></td>
                                         <td align="center">
-                                            <a href="<?php echo site_url('admin/hapus_admin/' . $g->id); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data Ini');" class="btn btn-danger btn-xs waves-effect" data-toggle="tooltip" data-placement="top" title="Hapus Data Admin" data-type="cancel"><i class="material-icons">delete_sweep</i></i></a>
+                                            <a href="<?php echo site_url('admin/hapus_admin/' . $g->id); ?>" onclick="return confirm('Apakah Anda Ingin Menghapus Data Ini');" class="btn bg-orange btn-xs waves-effect" data-toggle="tooltip" data-placement="top" title="Hapus Data Admin" data-type="cancel"><i class="material-icons">delete_sweep</i></i></a>
                                             <!-- <a href="<?php echo site_url('admin/ubah/' . $g->id); ?>" class="btn bg-indigo btn-xs waves-effect" data-toggle="tooltip" data-placement="top" title="Ubah Data Admin"><i class="material-icons">edit</i></i></a> -->
                                     </tr>
                                 <?php endforeach; ?>

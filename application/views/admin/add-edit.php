@@ -50,14 +50,13 @@
 
                         <a href="<?php echo base_url('admin'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
                         <input type="hidden" name="id" value="<?php echo !empty($gallery['id']) ? $gallery['id'] : ''; ?>">
-                        <input type="submit" name="imgSubmit" id="upload" class="btn bg-green waves-effect" data-loading-text=" Loading..." value="Upload">
+                        <input type="submit" name="imgSubmit" id="upload" class="btn bg-green waves-effect" data-loading-text=" Loading... Mohon Tunggu Sebentar...!" value="Upload">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 
 <!-- loading button -->
 <script>
