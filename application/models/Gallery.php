@@ -13,9 +13,131 @@ class Gallery extends CI_Model
     public function getRows($id = '')
     {
         $id_user = $this->session->userdata('userdata')->role;
+        $id_toko = $this->session->userdata('userdata')->id_toko;
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
         $this->db->where('title', $id_user);
+        $this->db->where('id_toko', $id_toko);
+        if ($id) {
+            $this->db->where('id', $id);
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->row_array() : array();
+
+            if (!empty($result)) {
+                $this->db->select('*');
+                $this->db->from($this->imgTbl);
+                $this->db->where('gallery_id', $result['id']);
+                $this->db->order_by('id', 'desc');
+                $query  = $this->db->get();
+                $result2 = ($query->num_rows() > 0) ? $query->result_array() : array();
+                $result['images'] = $result2;
+            }
+        } else {
+            $this->db->order_by('id', 'desc');
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->result_array() : array();
+        }
+
+        // return fetched data
+        return !empty($result) ? $result : false;
+    }
+
+    public function getRowsspv($id = '', $title = '75')
+    {
+        $id_user = $this->session->userdata('userdata')->role;
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($id) {
+            $this->db->where('id', $id);
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->row_array() : array();
+
+            if (!empty($result)) {
+                $this->db->select('*');
+                $this->db->from($this->imgTbl);
+                $this->db->where('gallery_id', $result['id']);
+                $this->db->order_by('id', 'desc');
+                $query  = $this->db->get();
+                $result2 = ($query->num_rows() > 0) ? $query->result_array() : array();
+                $result['images'] = $result2;
+            }
+        } else {
+            $this->db->order_by('id', 'desc');
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->result_array() : array();
+        }
+
+        // return fetched data
+        return !empty($result) ? $result : false;
+    }
+
+    public function getRowsspv300($id = '', $title = '300')
+    {
+        $id_user = $this->session->userdata('userdata')->role;
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($id) {
+            $this->db->where('id', $id);
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->row_array() : array();
+
+            if (!empty($result)) {
+                $this->db->select('*');
+                $this->db->from($this->imgTbl);
+                $this->db->where('gallery_id', $result['id']);
+                $this->db->order_by('id', 'desc');
+                $query  = $this->db->get();
+                $result2 = ($query->num_rows() > 0) ? $query->result_array() : array();
+                $result['images'] = $result2;
+            }
+        } else {
+            $this->db->order_by('id', 'desc');
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->result_array() : array();
+        }
+
+        // return fetched data
+        return !empty($result) ? $result : false;
+    }
+
+    public function getRowsspv420($id = '', $title = '420')
+    {
+        $id_user = $this->session->userdata('userdata')->role;
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
+        if ($id) {
+            $this->db->where('id', $id);
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->row_array() : array();
+
+            if (!empty($result)) {
+                $this->db->select('*');
+                $this->db->from($this->imgTbl);
+                $this->db->where('gallery_id', $result['id']);
+                $this->db->order_by('id', 'desc');
+                $query  = $this->db->get();
+                $result2 = ($query->num_rows() > 0) ? $query->result_array() : array();
+                $result['images'] = $result2;
+            }
+        } else {
+            $this->db->order_by('id', 'desc');
+            $query  = $this->db->get();
+            $result = ($query->num_rows() > 0) ? $query->result_array() : array();
+        }
+
+        // return fetched data
+        return !empty($result) ? $result : false;
+    }
+
+    public function getRowsspv700($id = '', $title = '700')
+    {
+        $id_user = $this->session->userdata('userdata')->role;
+        $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
+        $this->db->from($this->galleryTbl);
+        $this->db->where('title', $title);
         if ($id) {
             $this->db->where('id', $id);
             $query  = $this->db->get();

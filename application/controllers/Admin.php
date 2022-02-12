@@ -18,9 +18,13 @@ class Admin extends AUTH_Controller
 
     public function index()
     {
-        $data['title'] = 'dashboard';
-        $data['content'] = 'admin/dashboard';
-        $data['userdata'] = $this->userdata;
+        $data['title']          = 'dashboard';
+        $data['jum_toko']       = $this->M_admin->jum_toko();
+        $data['jum_adm']        = $this->M_admin->jum_adm();
+        $data['jum_kdr']        = $this->M_admin->jum_kdr();
+        $data['jum_gbr']        = $this->M_admin->jum_gbr();
+        $data['content']        = 'admin/dashboard';
+        $data['userdata']       = $this->userdata;
         $this->load->view($this->template, $data);
     }
 
@@ -45,6 +49,32 @@ class Admin extends AUTH_Controller
         $data['content'] = 'admin/daftar_upload';
         $this->load->view($this->template, $data);
     }
+
+    public function List_uploadspv()
+    {
+        $data = array();
+
+        // Get messages from the session
+        if ($this->session->userdata('success_msg')) {
+            $data['success_msg'] = $this->session->userdata('success_msg');
+            $this->session->unset_userdata('success_msg');
+        }
+        if ($this->session->userdata('error_msg')) {
+            $data['error_msg'] = $this->session->userdata('error_msg');
+            $this->session->unset_userdata('error_msg');
+        }
+
+        // Load the list page view
+        $data['gallery'] = $this->gallery->getRowsspv();
+        $data['g300'] = $this->gallery->getRowsspv300();
+        $data['g420'] = $this->gallery->getRowsspv420();
+        $data['g700'] = $this->gallery->getRowsspv700();
+        $data['title'] = 'Gallery Archive';
+        $data['userdata'] = $this->userdata;
+        $data['content'] = 'admin/daftar_upload_spv';
+        $this->load->view($this->template, $data);
+    }
+
     public function tampil($id)
     {
         $data = array();
@@ -73,7 +103,8 @@ class Admin extends AUTH_Controller
             // Prepare gallery data
             $galleryData = array(
                 'title' => $this->session->userdata('userdata')->role,
-                'user_id' => $this->session->userdata('userdata')->id
+                'user_id' => $this->session->userdata('userdata')->id,
+                'id_toko' => $this->session->userdata('userdata')->id_toko
             );
 
             // Validate submitted form data
@@ -120,7 +151,7 @@ class Admin extends AUTH_Controller
                                 } else {
                                     $uploadData[$i]['gallery_id'] = $galleryID;
                                     $uploadData[$i]['file_name'] = $fileData['file_name'];
-                                    $uploadData[$i]['uploaded_on'] = format_indo(date('Y-m-d H:i:s'));
+                                    $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
                                 }
                             }
                         } // end for
@@ -162,8 +193,8 @@ class Admin extends AUTH_Controller
             'new_image' => $target_path,
             'maintain_ratio' => TRUE,
             'quality' => '20%',
-            // 'width' => 500,
-            // 'height' => 500,
+            'width' => '1280',
+            'height' => 'auto',
         ];
         $this->load->library('image_lib', $config);
         if (!$this->image_lib->resize()) {
@@ -247,7 +278,6 @@ class Admin extends AUTH_Controller
                 }
             }
         }
-
 
         $data['gallery'] = $galleryData;
         $data['title'] = 'Update Gallery';
@@ -334,6 +364,7 @@ class Admin extends AUTH_Controller
 
             $data['title']    = 'Daftar Admin Baru';
             $data['content']  = 'admin/daftar';
+            $data['toko'] = $this->M_admin->get_toko();
             $data['userdata'] = $this->userdata;
             $this->load->view($this->template, $data);
         } else {
@@ -347,6 +378,7 @@ class Admin extends AUTH_Controller
                 'foto' => 'default.png',
                 'role' => $this->input->post('role'),
                 'dibuat' => date("Y-m-d H:i:s"),
+                'id_toko' => $this->input->post('id_toko'),
             ];
             $this->db->insert('admin', $data);
             $this->session->set_flashdata('success_msg', 'Data Admin Baru Berhasil Ditambahkan');
@@ -374,10 +406,55 @@ class Admin extends AUTH_Controller
         $data['userdata']   = $this->userdata;
         $this->load->view($this->template, $data);
     }
+
     function hapus_admin($params = '')
     {
         $this->M_admin->hapus($params);
         $this->session->set_userdata('success_msg', 'Data Admin Berhasil dihapus.');
         return redirect('Admin/list_admin');
+    }
+
+    public function list_toko()
+    {
+        $data = array();
+
+        // Get messages from the session
+        if ($this->session->userdata('success_msg')) {
+            $data['success_msg'] = $this->session->userdata('success_msg');
+            $this->session->unset_userdata('success_msg');
+        }
+        if ($this->session->userdata('error_msg')) {
+            $data['error_msg'] = $this->session->userdata('error_msg');
+            $this->session->unset_userdata('error_msg');
+        }
+
+        $data['title']      = 'List Toko';
+        $data['content']    = 'admin/list_toko';
+        $data['list']       = $this->M_admin->get_toko();
+        $data['userdata']   = $this->userdata;
+        $this->load->view($this->template, $data);
+    }
+
+    function simpan_toko()
+    {
+        if ($this->input->post() == FALSE) {
+            $this->session->set_flashdata('error', "Toko Baru Gagal DIinput");
+            redirect('Admin/list_toko');
+        } else {
+            $data = [
+                'nama_toko' => $this->input->post('nama_toko'),
+                'dibuat' => date("Y-m-d H:i:s"),
+            ];
+            $this->db->insert('toko', $data);
+            $this->session->set_flashdata('success_msg', 'Data Toko Baru Berhasil Ditambahkan');
+            redirect('admin/list_toko');
+        }
+    }
+
+    function hapus_toko($params = '')
+    {
+        $this->M_admin->hapus_toko($params);
+        $this->session->set_userdata('success_msg', 'Data Toko Berhasil dihapus.');
+        return redirect('Admin/list_toko');
     }
 }

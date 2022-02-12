@@ -129,6 +129,7 @@
 <script src="<?= base_url('assets/'); ?>js/pages/ui/dialogs.js"></script>
 <!-- Bootstrap Notify Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/bootstrap-notify/bootstrap-notify.js"></script>
+<script src="<?= base_url('assets/'); ?>js/pages/ui/modals.js"></script>
 
 <!-- Jquery DataTable Plugin Js -->
 <script src="<?= base_url('assets/'); ?>plugins/jquery-datatable/jquery.dataTables.js"></script>

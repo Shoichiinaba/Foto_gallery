@@ -15,7 +15,7 @@
                             <div class="row clearfix">
                                 <?php $no = 0;
                                 foreach ($toko as $g) : $no++; ?>
-                                    <a href="<?php echo site_url('manage_gallery/katalog/'); ?>">
+                                    <a href="<?php echo site_url('Manage_gallery/katalog/' . $g->id); ?>">
                                         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 p-b-10">
                                             <button class="btn bg-purple btn-lg btn-block waves-effect" type="button">
                                                 <i class=" material-icons">store</i>

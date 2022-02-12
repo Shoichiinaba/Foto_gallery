@@ -12,7 +12,7 @@
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="<?php echo base_url() ?>Profile"><i class="material-icons">person</i>Profile</a></li>
                         <li role="separator" class="divider"></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo base_url() ?>Auth/logout"><i class="material-icons">input</i>Sign Out</a></li>
@@ -122,11 +122,22 @@
                             <span>Upload Foto</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo site_url('Admin/add'); ?>">Upload</a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="<?php echo site_url('Admin/List_upload'); ?>">Daftar Foto</a>
+                                <a href="<?php echo site_url('Admin/List_uploadspv'); ?>">Daftar Foto</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">account_box</i>
+                            <span>Toko (Wilayah)</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<?php echo site_url('Admin/list_toko'); ?>">Daftar Toko</a>
                             </li>
                         </ul>
                     </li>
@@ -139,14 +150,11 @@
                             <li>
                                 <a href="<?php echo site_url('Admin/list_admin'); ?>">Daftar Admin</a>
                             </li>
-                            <!-- <li>
-                            <a href="<?php echo site_url('Admin'); ?>">Daftar Toko</a>
-                        </li> -->
                         </ul>
-                    <?php } else { ?>
-
-                    <?php } ?>
                     </li>
+                <?php } else { ?>
+
+                <?php } ?>
             </ul>
         </div>
         <!-- Footer -->

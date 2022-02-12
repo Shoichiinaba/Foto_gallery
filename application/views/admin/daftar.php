@@ -109,6 +109,19 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="input-group col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">store</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <select name="id_toko" class="form-control show-tick">
+                                                            <option value="">-- Pilih Toko --</option>
+                                                            <?php foreach ($toko as $g) : ?>
+                                                                <option value="<?php echo $g->id; ?>"><?php echo $g->nama_toko; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <button class="btn btn-block btn-lg bg-teal waves-effect" type="submit">DAFTAR</button>
                                             </form>
                                         </div>
