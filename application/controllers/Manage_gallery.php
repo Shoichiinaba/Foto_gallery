@@ -40,34 +40,16 @@ class Manage_gallery extends CI_Controller
         $this->load->view($this->template, $data);
     }
 
-    public function Katalog()
+    public function Katalog($id = '')
     {
-        //--!!design awal!!--
-        // $data = array();
-
-        // // Get messages from the session
-        // if ($this->session->userdata('success_msg')) {
-        //     $data['success_msg'] = $this->session->userdata('success_msg');
-        //     $this->session->unset_userdata('success_msg');
-        // }
-        // if ($this->session->userdata('error_msg')) {
-        //     $data['error_msg'] = $this->session->userdata('error_msg');
-        //     $this->session->unset_userdata('error_msg');
-        // }
-
-        // $data['gallery'] = $this->gallery->getRows();
-        // $data['title'] = 'Katalog Gallery';
-
-        // // Load the list page view
-        // $this->load->view('templates/header', $data);
-        // $this->load->view('templates/main', $data);
-        // $this->load->view('gallery/index', $data);
-        // $this->load->view('templates/footer');
-
         // design setelah uji exprience dengan user
 
         $data['title']      = 'Gallery Archive';
         $data['content']    = 'gallery/Katalog_prod';
+        if (strlen(trim($id)) > 0) {
+            $this->session->set_userdata('kode_toko', $id);
+        }
+
         $this->load->view($this->template, $data);
     }
 

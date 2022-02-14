@@ -59,15 +59,17 @@ class Katalog_m extends CI_Model
         return $this->db->get('toko')->result();
     }
     // pencarian live
-    function fetch_data($query, $title = '75', $id = '')
+    function fetch_data($query, $title = '75')
     {
+
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
         $this->db->where('title', $title);
-        $this->db->where('id_toko', $id);
+        if ($this->session->userdata('kode_toko')) {
+            $this->db->where('id_toko', $this->session->userdata('kode_toko'));
+        }
         if ($query != '') {
             $this->db->like('created', $query);
-            $this->db->where('id_toko', $query);
         }
         $this->db->order_by('created', 'DESC');
         return $this->db->get();
@@ -78,6 +80,9 @@ class Katalog_m extends CI_Model
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
         $this->db->where('title', $title);
+        if ($this->session->userdata('kode_toko')) {
+            $this->db->where('id_toko', $this->session->userdata('kode_toko'));
+        }
         if ($query != '') {
             $this->db->like('created', $query);
         }
@@ -90,6 +95,9 @@ class Katalog_m extends CI_Model
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
         $this->db->where('title', $title);
+        if ($this->session->userdata('kode_toko')) {
+            $this->db->where('id_toko', $this->session->userdata('kode_toko'));
+        }
         if ($query != '') {
             $this->db->like('created', $query);
         }
@@ -101,6 +109,9 @@ class Katalog_m extends CI_Model
         $this->db->select("*, (SELECT file_name FROM " . $this->imgTbl . " WHERE gallery_id = " . $this->galleryTbl . ".id ORDER BY id DESC LIMIT 1) as default_image");
         $this->db->from($this->galleryTbl);
         $this->db->where('title', $title);
+        if ($this->session->userdata('kode_toko')) {
+            $this->db->where('id_toko', $this->session->userdata('kode_toko'));
+        }
         if ($query != '') {
             $this->db->like('created', $query);
         }

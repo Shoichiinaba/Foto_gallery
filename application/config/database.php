@@ -78,11 +78,11 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'database' => 'u5587213_foto_gallery',
 	// // online
-	'username' => 'u5587213_foto_gallery',
-	'password' => 'Semarang123!',
+	// 'username' => 'u5587213_foto_gallery',
+	// 'password' => 'Semarang123!',
 	// // ofline
-	// 'username' => 'root',
-	// 'password' => '',
+	'username' => 'root',
+	'password' => '',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
