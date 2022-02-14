@@ -160,7 +160,7 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; <?= date('Y') ?> <a href="https://sisolusi.id/web/">Foto Gallery</a>.
+                &copy; <?= date('Y') ?> <a href="https://sisolusi.id/web/">Foto Gallery V.1.0</a>.
             </div>
             <div class="version">
                 <b>Version: </b> (Insider)
