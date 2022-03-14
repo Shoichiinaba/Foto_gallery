@@ -77,10 +77,10 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'database' => 'u5587213_foto_gallery',
-	// // online
+	// online
 	'username' => 'u5587213_foto_gallery',
 	'password' => 'Semarang123!',
-	// // ofline
+	// ofline
 	// 'username' => 'root',
 	// 'password' => '',
 	'dbdriver' => 'mysqli',

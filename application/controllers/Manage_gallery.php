@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Manage_gallery extends CI_Controller
 {
@@ -15,6 +16,7 @@ class Manage_gallery extends CI_Controller
         // Load gallery model
         $this->load->model('gallery');
         $this->load->model('Katalog_m');
+        $this->load->model('M_admin');
 
         // Default controller name
         $this->controller = 'manage_gallery';
@@ -60,6 +62,11 @@ class Manage_gallery extends CI_Controller
 
         // Check whether id is not empty
         if (!empty($id)) {
+            $data_user = $this->db->query("SELECT gallery.user_id as kode_user, admin.no_tlp FROM `gallery_images`
+            INNER JOIN gallery ON gallery.id = gallery_images.gallery_id
+            INNER JOIN admin ON admin.id = gallery.user_id
+            WHERE gallery_id = $id LIMIT 1");
+            $data['data'] = $data_user->row(1);
             $data['gallery'] = $this->Katalog_m->getRows($id);
             $data['title'] = $data['gallery']['title'];
             $data['content']     = 'gallery/view';

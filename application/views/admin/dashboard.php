@@ -95,14 +95,41 @@
                             </div>
                         <?php } else { ?>
                             <!-- dashboard admin biasa -->
-                            <div class="col-lg-5 col-xs-3">
-                                <!-- Kotak kosong untuk kiri -->
-                            </div>
-                            <div class="col-lg-4 col-md-9 col-sm-12 col-xs-2 align-center">
-                                <img src="<?php echo base_url(); ?>assets/images/lg2.png" class="text-center" width="100" height="" alt="User" />
-                            </div>
-                            <div class="col-lg-6 col-xs-5">
-                                <!-- Kotak Kosong kanan -->
+                            <div class="row clearfix">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <!-- <div class="info-box hover-zoom-effect">
+                                        <div class="icon bg-indigo">
+                                            <i class="material-icons">compare</i>
+                                        </div>
+                                        <div class="content">
+                                            <div class="text">Jumlah Gallery</div>
+                                            <div class="number"><?php echo $jum_kdr; ?> Gallery</div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box hover-zoom-effect">
+                                        <div class="icon bg-deep-purple">
+                                            <i class="material-icons">store</i>
+                                        </div>
+                                        <div class="content">
+                                            <div class="text">Toko / Region</div>
+                                            <div class="number"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <!-- <div class="info-box hover-zoom-effect">
+                                        <div class="icon bg-teal">
+                                            <i class="material-icons">perm_media</i>
+                                        </div>
+                                        <div class="content">
+                                            <div class="text">Jumlah Gambar</div>
+                                            <div class="number"><?php echo $jum_foto;  ?> Foto</div>
+                                        </div>
+                                    </div> -->
+                                </div>
                             </div>
                         <?php } ?>
                     </div>

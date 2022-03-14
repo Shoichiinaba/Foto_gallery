@@ -57,3 +57,8 @@
         </div>
     </div>
 </section>
+<script>
+    const id = <?= $data->kode_user ?>;
+    const result = <?= $data->no_tlp ?>;
+    window.url_wa = "https://api.whatsapp.com/send?phone=" + result + "&text=Saya%20tertarik%20untuk%20membeli%20produk%20ini%20segera%20%20http%3A%2F%2Flocalhost%3A8080%2FFoto_gallery%2FManage_gallery%2Fview%2F79%23lg%3D1%26slide%3D0";
+</script>

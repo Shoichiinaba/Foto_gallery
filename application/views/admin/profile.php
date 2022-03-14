@@ -89,6 +89,12 @@
                   </div>
                 </div>
                 <div class="form-group row">
+                  <label for="inputNama" class="col-sm-2 control-label">No. Phone</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="No. Phone" name="no_tlp" value="<?php echo $userdata->no_tlp; ?>">
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label for="inputFoto" class="col-sm-2 control-label">Foto</label>
                   <div class="col-sm-10">
                     <input type="file" class="form-control" placeholder="Foto" name="foto">

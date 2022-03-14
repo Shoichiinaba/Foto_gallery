@@ -36,13 +36,13 @@ class M_admin extends CI_Model
 		$query = $this->db->get('admin');
 		return $query->result();
 	}
-
 	public function get_toko()
 	{
 		$query = $this->db->query("SELECT * FROM toko ");
 		return $query->result();
 	}
 
+	// Dashboard Super admin
 	// dasboard hitung jumlah
 	// jumlah toko
 	public function jum_toko()
@@ -81,6 +81,12 @@ class M_admin extends CI_Model
 		$sql = "DELETE  FROM toko WHERE id = ? ";
 		return $this->db->query($sql, $params);
 	}
+	// akhir dashboard superadmin
+
+	// dashboard admin oprator
+	//jumlah gambar
+
+	// akhir dashboard admin oprator
 }
 
 /* End of file M_admin.php */

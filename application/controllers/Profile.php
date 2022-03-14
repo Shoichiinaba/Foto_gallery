@@ -25,6 +25,7 @@ class Profile extends AUTH_Controller
 	{
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[15]');
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('no_tlp', 'No Phone', 'trim');
 
 		$id = $this->userdata->id;
 		$data = $this->input->post();

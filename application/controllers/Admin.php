@@ -23,6 +23,7 @@ class Admin extends AUTH_Controller
         $data['jum_adm']        = $this->M_admin->jum_adm();
         $data['jum_kdr']        = $this->M_admin->jum_kdr();
         $data['jum_gbr']        = $this->M_admin->jum_gbr();
+        // $data['jum_ktalog']       = $this->M_admin->jum_ktalog();
         $data['content']        = 'admin/dashboard';
         $data['userdata']       = $this->userdata;
         $this->load->view($this->template, $data);

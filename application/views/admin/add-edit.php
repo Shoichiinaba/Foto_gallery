@@ -1,4 +1,5 @@
 <section class="content">
+    <!-- Alert -->
     <div class="clearfix">
         <?php if (!empty($success_msg)) { ?>
             <div class="col-xs-12 col-lg-12">
@@ -35,7 +36,7 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Gambar:</label>
-                            <input type="file" name="images[]" class="form-control" max="80" multiple>
+                            <input type="file" name="images[]" class="form-control" max="80" multiple required="">
                             <?php if (!empty($gallery['images'])) { ?>
                                 <div class="gallery-img">
                                     <?php foreach ($gallery['images'] as $imgRow) { ?>
@@ -48,7 +49,7 @@
                             <?php } ?>
                         </div>
 
-                        <a href="<?php echo base_url('admin'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
+                        <a href="<?php echo base_url('admin/add'); ?>" class="btn bg-deep-orange vave-effect"> Batal</a>
                         <input type="hidden" name="id" value="<?php echo !empty($gallery['id']) ? $gallery['id'] : ''; ?>">
                         <input type="submit" name="imgSubmit" id="upload" class="btn bg-green waves-effect" data-loading-text=" Loading... Mohon Tunggu Sebentar...!" value="Upload">
                     </form>

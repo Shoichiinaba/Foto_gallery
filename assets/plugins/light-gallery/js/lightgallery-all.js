@@ -3494,10 +3494,12 @@
 
     Share.prototype.init = function() {
         var _this = this;
+        var base_url = window.location.origin;
+
 
         var shareHtml = '<button type="button" aria-label="Share" id="lg-share" class="lg-icon" aria-haspopup="true" aria-expanded="false">' +
             '<ul class="lg-dropdown" style="position: absolute;">';
-        shareHtml += _this.core.s.whatsapp ? '<li><a id="lg-share-whatsapp" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.whatsappDropdownText + '</span></a></li>' : '';
+        shareHtml += _this.core.s.whatsapp ? '<li><a id="lg-share-whatsapp" target="_blank"><img src="'+base_url + '/Foto_gallery/assets/images/wa_icon.png'+'" width="20" height="20"/>&nbsp;<span class="lg-dropdown-text">' + this.core.s.whatsappDropdownText + '</span></a></li>' : '';
         shareHtml += _this.core.s.twitter ? '<li><a id="lg-share-twitter" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.twitterDropdownText + '</span></a></li>' : '';
         shareHtml += _this.core.s.googlePlus ? '<li><a id="lg-share-googleplus" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.googlePlusDropdownText + '</span></a></li>' : '';
         shareHtml += _this.core.s.pinterest ? '<li><a id="lg-share-pinterest" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.pinterestDropdownText + '</span></a></li>' : '';
@@ -3520,9 +3522,12 @@
 
             setTimeout(function() {
 
-                $('#lg-share-whatsapp').attr('href', 'https://api.whatsapp.com/send?phone=6289615139363&text=Saya%20tertarik%20untuk%20membeli%20produk%20ini%20segera %20' + (encodeURIComponent(_this.getSahreProps(index, 'whatsappShareUrl') || window.location.href)));
+ //              $('#lg-share-whatsapp').attr('href', 'https://api.whatsapp.com/send?phone=62811281408&text=Saya%20tertarik%20untuk%20membeli%20produk%20ini%20segera %20' + (encodeURIComponent(_this.getSahreProps(index, 'whatsappShareUrl') || window.location.href)));
 
-                $('#lg-share-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + _this.getSahreProps(index, 'tweetText') + '&url=' + (encodeURIComponent(_this.getSahreProps(index, 'twitterShareUrl') || window.location.href)));
+             $('#lg-share-whatsapp').attr('href', window.url_wa);
+
+
+               $('#lg-share-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + _this.getSahreProps(index, 'tweetText') + '&url=' + (encodeURIComponent(_this.getSahreProps(index, 'twitterShareUrl') || window.location.href)));
 
                 $('#lg-share-googleplus').attr('href', 'https://plus.google.com/share?url=' + (encodeURIComponent(_this.getSahreProps(index, 'googleplusShareUrl') || window.location.href)));
 
