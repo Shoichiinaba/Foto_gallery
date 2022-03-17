@@ -193,7 +193,7 @@ class Admin extends AUTH_Controller
             'source_image' => $source_path,
             'new_image' => $target_path,
             'maintain_ratio' => TRUE,
-            'quality' => '20%',
+            'quality' => '30%',
             'width' => '1280',
             'height' => 'auto',
         ];
@@ -212,26 +212,28 @@ class Admin extends AUTH_Controller
     public function edit($id)
     {
         $data = $galleryData = array();
-        $errorUpload = '';
 
         // Get gallery data
         $galleryData = $this->gallery->getRows($id);
 
-        // If update request is submitted
+        // If add request is submitted
         if ($this->input->post('imgSubmit')) {
-            // Form field validation rules
-            $this->form_validation->set_rules('title', 'gallery title', 'required');
+            $this->form_validation->set_rules('images', 'required');
 
             // Prepare gallery data
             $galleryData = array(
-                'title' => $this->input->post('title')
+                'title' => $this->session->userdata('userdata')->role,
+                // 'user_id' => $this->session->userdata('userdata')->id,
+                // 'id_toko' => $this->session->userdata('userdata')->id_toko
             );
 
             // Validate submitted form data
-            if ($this->form_validation->run() == true) {
-                // Update gallery data
+            if (!$this->form_validation->run() == true) {
+                // Insert gallery data
                 $update = $this->gallery->update($galleryData, $id);
+                // $galleryID = $update;
 
+                $errorsData = [];
                 if ($update) {
                     if (!empty($_FILES['images']['name'])) {
                         $filesCount = count($_FILES['images']['name']);
@@ -242,29 +244,40 @@ class Admin extends AUTH_Controller
                             $_FILES['file']['error']    = $_FILES['images']['error'][$i];
                             $_FILES['file']['size']     = $_FILES['images']['size'][$i];
 
+                            $pathName = $_FILES['file']['name'];
+
                             // File upload configuration
                             $uploadPath = 'uploads/images/';
+                            $config['file_name'] = random_string('alnum', 16) . '_' . $pathName . '.' . pathinfo($pathName, PATHINFO_EXTENSION);
                             $config['upload_path'] = $uploadPath;
                             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-
                             // Load and initialize upload library
                             $this->load->library('upload', $config);
                             $this->upload->initialize($config);
 
                             // Upload file to server
-                            if ($this->upload->do_upload('file')) {
+                            if (!$this->upload->do_upload('file')) {
                                 // Uploaded file data
-                                $fileData = $this->upload->data();
-                                $uploadData[$i]['gallery_id'] = $id;
-                                $uploadData[$i]['file_name'] = $fileData['file_name'];
-                                $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
+                                $error = [
+                                    'status' => 'Upload Error',
+                                    'message' => $this->upload->display_errors()
+                                ];
+                                $errorsData[] = $error;
                             } else {
-                                // $errorUpload .= $fileImages[$key] . '(' . $this->upload->display_errors('', '') . ') | ';
+                                $fileData = $this->upload->data();
+                                $compressImage = $this->resizeImage($fileData['file_name']);
+                                if (is_array($compressImage) && ($compressImage['status'] == 'error compress')) {
+                                    $errorsData[] = $compressImage;
+                                } else {
+                                    $uploadData[$i]['gallery_id'] = $id;
+                                    $uploadData[$i]['file_name'] = $fileData['file_name'];
+                                    $uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
+                                }
                             }
-                        }
+                        } // end for
 
                         // File upload error message
-                        $errorUpload = !empty($errorUpload) ? 'Upload Error: ' . trim($errorUpload, ' | ') : '';
+                        $errorUpload = !empty($errorUpload) ? ' Upload Error: ' . trim($errorUpload, ' | ') : '';
 
                         if (!empty($uploadData)) {
                             // Insert files data into the database
@@ -272,12 +285,12 @@ class Admin extends AUTH_Controller
                         }
                     }
 
-                    $this->session->set_userdata('success_msg', 'Gallery Berhasil DI Ubah.' . $errorUpload);
+                    $this->session->set_userdata('success_msg', 'Gambar Baru Berhasil Ditambahkan.' . $errorUpload);
                     return redirect('Admin/List_upload');
                 } else {
-                    $data['error_msg'] = 'Some problems occurred, please try again.';
+                    $data['error_msg'] = 'Ada masalah dalam proses Upload, Mohon Ulangi Lagi.';
                 }
-            }
+            } // end if validation
         }
 
         $data['gallery'] = $galleryData;
@@ -287,7 +300,6 @@ class Admin extends AUTH_Controller
 
         // Load the add page view
         $data['content']     = 'admin/add-edit';
-        $data['userdata'] = $this->userdata;
         $this->load->view($this->template, $data);
     }
 

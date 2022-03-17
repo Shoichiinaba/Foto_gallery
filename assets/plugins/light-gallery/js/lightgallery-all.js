@@ -2733,7 +2733,7 @@
         var zoomIcons = '<button type="button" aria-label="Zoom in" id="lg-zoom-in" class="lg-icon"></button><button type="button" aria-label="Zoom out" id="lg-zoom-out" class="lg-icon"></button>';
 
         if (_this.core.s.actualSize) {
-            zoomIcons += '<button type="button" aria-label="Actual size" id="lg-actual-size" class="lg-icon"></button>';
+            // zoomIcons += '<button type="button" aria-label="Actual size" id="lg-actual-size" class="lg-icon"></button>';
         }
 
         if (_this.core.s.useLeftForZoom) {
@@ -3499,11 +3499,11 @@
 
         var shareHtml = '<button type="button" aria-label="Share" id="lg-share" class="lg-icon" aria-haspopup="true" aria-expanded="false">' +
             '<ul class="lg-dropdown" style="position: absolute;">';
-        shareHtml += _this.core.s.whatsapp ? '<li><a id="lg-share-whatsapp" target="_blank"><img src="'+base_url + '/Foto_gallery/assets/images/wa_icon.png'+'" width="20" height="20"/>&nbsp;<span class="lg-dropdown-text">' + this.core.s.whatsappDropdownText + '</span></a></li>' : '';
-        shareHtml += _this.core.s.twitter ? '<li><a id="lg-share-twitter" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.twitterDropdownText + '</span></a></li>' : '';
-        shareHtml += _this.core.s.googlePlus ? '<li><a id="lg-share-googleplus" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.googlePlusDropdownText + '</span></a></li>' : '';
-        shareHtml += _this.core.s.pinterest ? '<li><a id="lg-share-pinterest" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.pinterestDropdownText + '</span></a></li>' : '';
-        shareHtml += '</ul></button>';
+            shareHtml += _this.core.s.twitter ? '<li><a id="lg-share-twitter" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.twitterDropdownText + '</span></a></li>' : '';
+            shareHtml += _this.core.s.whatsapp ? '<li><a id="lg-share-whatsapp" target="_blank"><img src="'+base_url + '/Foto_gallery/assets/images/wa_icon.png'+'" width="20" height="20"/>&nbsp;<span class="lg-dropdown-text">' + this.core.s.whatsappDropdownText + '</span></a></li>' : '';
+            shareHtml += _this.core.s.googlePlus ? '<li><a id="lg-share-googleplus" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.googlePlusDropdownText + '</span></a></li>' : '';
+            shareHtml += _this.core.s.pinterest ? '<li><a id="lg-share-pinterest" target="_blank"><span class="lg-icon"></span><span class="lg-dropdown-text">' + this.core.s.pinterestDropdownText + '</span></a></li>' : '';
+            shareHtml += '</ul></button>';
 
         this.core.$outer.find('.lg-toolbar').append(shareHtml);
         this.core.$outer.find('.lg').append('<div id="lg-dropdown-overlay"></div>');
