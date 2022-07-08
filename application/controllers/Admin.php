@@ -19,12 +19,12 @@ class Admin extends AUTH_Controller
     public function index()
     {
         $data['title']          = 'dashboard';
-        $data['jum_toko']       = $this->M_admin->jum_toko();
-        $data['jum_adm']        = $this->M_admin->jum_adm();
-        $data['jum_kdr']        = $this->M_admin->jum_kdr();
-        $data['jum_gbr']        = $this->M_admin->jum_gbr();
-        $data['region']         = $this->gallery->getregion();
-        $data['region']         = $this->M_admin->get_region();
+        // $data['jum_toko']       = $this->M_admin->jum_toko();
+        // $data['jum_adm']        = $this->M_admin->jum_adm();
+        // $data['jum_kdr']        = $this->M_admin->jum_kdr();
+        // $data['jum_gbr']        = $this->M_admin->jum_gbr();
+        // $data['region']         = $this->gallery->getregion();
+        // $data['region']         = $this->M_admin->get_region();
         $data['content']        = 'admin/dashboard';
         $data['userdata']       = $this->userdata;
         $this->load->view($this->template, $data);

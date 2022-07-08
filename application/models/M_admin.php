@@ -59,23 +59,23 @@ class M_admin extends CI_Model
 		return $query->num_rows();
 	}
 	// jumlah kadar
-	public function jum_kdr()
-	{
-		$this->db->select('id, title, COUNT(title) as jum_kdr');
-		$this->db->group_by('title');
-		$this->db->order_by('jum_kdr', 'desc');
-		$hasil = $this->db->get('gallery');
-		return $hasil->num_rows();
-	}
+	// public function jum_kdr()
+	// {
+	// 	$this->db->select('id, title, COUNT(title) as jum_kdr');
+	// 	$this->db->group_by('title');
+	// 	$this->db->order_by('jum_kdr', 'desc');
+	// 	$hasil = $this->db->get('gallery');
+	// 	return $hasil->num_rows();
+	// }
 	//jumlah gambar
-	public function jum_gbr($file_name = '')
-	{
-		$this->db->select('id, file_name, COUNT(file_name) as jum_gbr');
-		$this->db->group_by('file_name');
-		$this->db->order_by('jum_gbr', 'desc');
-		$hasil = $this->db->get('gallery_images');
-		return $hasil->num_rows();
-	}
+	// public function jum_gbr($file_name = '')
+	// {
+	// 	$this->db->select('id, file_name, COUNT(file_name) as jum_gbr');
+	// 	$this->db->group_by('file_name');
+	// 	$this->db->order_by('jum_gbr', 'desc');
+	// 	$hasil = $this->db->get('gallery_images');
+	// 	return $hasil->num_rows();
+	// }
 	function hapus_toko($params = '')
 	{
 		$sql = "DELETE  FROM toko WHERE id = ? ";
@@ -83,14 +83,14 @@ class M_admin extends CI_Model
 	}
 	// akhir dashboard superadmin
 
-	public function get_region()
-	{
-		$this->db->select('admin.*, toko.id AS id_toko, nama_toko');
-		$this->db->join('toko', 'admin.id_toko = toko.id');
-		// $this->db->order_by('nama_toko');
-		$query = $this->db->get('admin');
-		return $query->result();
-	}
+	// public function get_region()
+	// {
+	// 	$this->db->select('admin.*, toko.id AS id_toko, nama_toko');
+	// 	$this->db->join('toko', 'admin.id_toko = toko.id');
+	// 	// $this->db->order_by('nama_toko');
+	// 	$query = $this->db->get('admin');
+	// 	return $query->result();
+	// }
 }
 
 /* End of file M_admin.php */
