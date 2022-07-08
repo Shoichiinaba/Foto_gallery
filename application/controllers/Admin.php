@@ -23,7 +23,8 @@ class Admin extends AUTH_Controller
         $data['jum_adm']        = $this->M_admin->jum_adm();
         $data['jum_kdr']        = $this->M_admin->jum_kdr();
         $data['jum_gbr']        = $this->M_admin->jum_gbr();
-        // $data['jum_ktalog']       = $this->M_admin->jum_ktalog();
+        $data['region']         = $this->gallery->getregion();
+        $data['region']         = $this->M_admin->get_region();
         $data['content']        = 'admin/dashboard';
         $data['userdata']       = $this->userdata;
         $this->load->view($this->template, $data);
@@ -223,8 +224,6 @@ class Admin extends AUTH_Controller
             // Prepare gallery data
             $galleryData = array(
                 'title' => $this->session->userdata('userdata')->role,
-                // 'user_id' => $this->session->userdata('userdata')->id,
-                // 'id_toko' => $this->session->userdata('userdata')->id_toko
             );
 
             // Validate submitted form data

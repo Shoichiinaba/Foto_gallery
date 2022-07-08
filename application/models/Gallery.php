@@ -7,6 +7,7 @@ class Gallery extends CI_Model
     {
         $this->galleryTbl   = 'gallery';
         $this->imgTbl = 'gallery_images';
+        $this->tokoTbl = 'toko';
     }
 
     // Fetch gallery data from the database
@@ -239,5 +240,9 @@ class Gallery extends CI_Model
 
         // Return the status
         return $delete ? true : false;
+    }
+
+    public function getregion()
+    {
     }
 }

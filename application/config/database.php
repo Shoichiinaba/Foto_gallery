@@ -78,8 +78,11 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'database' => 'u5587213_foto_gallery',
 	// online
-	'username' => 'u5587213_foto_gallery',
-	'password' => 'Semarang123!',
+	// 'username' => 'u5587213_foto_gallery',
+	// 'password' => 'Semarang123!',
+	// online kanpa
+	'username' => 'kanpa',
+	'password' => 'kanpa2020',
 	// ofline
 	// 'username' => 'root',
 	// 'password' => '',

@@ -114,10 +114,9 @@
                                         </div>
                                         <div class="content">
                                             <div class="text">Toko / Region</div>
-                                            <div class="number"></div>
+                                            <div class="number"><?php echo $userdata->id_toko; ?></div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <!-- <div class="info-box hover-zoom-effect">

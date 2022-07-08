@@ -83,10 +83,14 @@ class M_admin extends CI_Model
 	}
 	// akhir dashboard superadmin
 
-	// dashboard admin oprator
-	//jumlah gambar
-
-	// akhir dashboard admin oprator
+	public function get_region()
+	{
+		$this->db->select('admin.*, toko.id AS id_toko, nama_toko');
+		$this->db->join('toko', 'admin.id_toko = toko.id');
+		// $this->db->order_by('nama_toko');
+		$query = $this->db->get('admin');
+		return $query->result();
+	}
 }
 
 /* End of file M_admin.php */
